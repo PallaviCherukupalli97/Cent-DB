@@ -1,3 +1,5 @@
+import Authentication.Login;
+import Authentication.Registration;
 import UserInterface.Menu;
 
 public class CentDB {
@@ -5,18 +7,19 @@ public class CentDB {
 
         //This is the entry point for the application
         System.out.println("Welcome to CentDB Application..!");
-        Menu menu = new Menu();
         int choice;
 
         while(true) {
-            choice = menu.mainMenu();
+            choice = Menu.mainMenu();
             switch (choice) {
                 case 1 -> {
-                    System.out.println("Call Registration code");
+//                    System.out.println("Call Registration code");
+                    Registration.registerUser();
                     //Register new user
                 }
                 case 2 -> {
-                    System.out.println("Call Login code");
+//                    System.out.println("Call Login code");
+                    Login.loginUser();
                     // Login User
                     
                 }
@@ -24,9 +27,8 @@ public class CentDB {
                     System.out.println("Exiting application...");
                     System.exit(0);
                 }
-                default -> {
-                    System.out.println("Invalid selection! Please try again.");
-                }
+                default -> System.out.println("Invalid selection! Please try again.");
+
             }
         }
     }

@@ -2,12 +2,9 @@ package UserInterface;
 import java.util.Scanner;
 
 public class Menu {
-    static Scanner input;
-    public Menu(){
-        input = new Scanner(System.in);
-    }
+    static Scanner input = new Scanner(System.in);
 
-    public int mainMenu() {
+    public static int mainMenu() {
         System.out.println("\n1. Register new user");
         System.out.println("2. Login user");
         System.out.println("0. Exit");
@@ -15,7 +12,7 @@ public class Menu {
         return input.nextInt();
     }
 
-    public int operationMenu(){
+    public static int operationMenu(){
         System.out.println("1. Write Queries");
         System.out.println("2. Export");
         System.out.println("3. Data Model");
