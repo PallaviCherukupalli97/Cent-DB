@@ -1,7 +1,10 @@
 package QueryParser;
 
 import Operations.DatabaseOperation;
+import Operations.RegexOperations;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Parser {
@@ -37,7 +40,8 @@ public class Parser {
                     databaseOperation.createDatabase(name);
 //                    call create table method
                 }else if(keyword.equalsIgnoreCase("table")){
-                    databaseOperation.createTable(name);
+                    List<String> column_data = RegexOperations.getColumnValues(query);
+                    databaseOperation.createTable(name, column_data);
 
 //                    check if database is selected
 //                    call create database method
@@ -52,6 +56,24 @@ public class Parser {
 
                 break;
             case "INSERT":
+                if(RegexOperations.validInsertQuery(query)){
+                    List<String> column_values = RegexOperations.getColumnValues(query);
+                    List<String> column_names = RegexOperations.getColumnNames(query);
+                    String tableName = query.split(" ")[2];
+
+                    databaseOperation.insertRow(tableName,column_names,column_values);
+
+//                    System.out.println("Table name: " + tableName);
+//                    System.out.println("Column names: " + Arrays.toString(column_names.toArray()));
+//                    System.out.println("Column values: " + Arrays.toString(column_values.toArray()));
+
+
+
+//                    databaseOperation.insertRow(tableName, column_names, values);
+
+                }else{
+                    System.out.println("Invalid query. Please try again.");
+                }
 
                 break;
             case "UPDATE":
