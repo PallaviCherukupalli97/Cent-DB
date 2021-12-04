@@ -1,5 +1,8 @@
 package Authentication;
 
+import Operations.MenuOperation;
+import UserInterface.Menu;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Scanner;
@@ -37,9 +40,14 @@ public class Login {
                             Scanner sc = new Scanner(System.in);
                             String answer = sc.nextLine();
                             if(answer.equals((val.split(" ; ")[3]).replace(" ",""))) {
-                                System.out.println("Access granted");
+                                System.out.println("Access granted: User " + username + " logged in successfully.");
 //                                giveOptions();
-//                                Menu.operationMenu();
+//                                int choice = 0;
+//                                do {
+//                                    choice = Menu.operationMenu();
+                                    MenuOperation operation = new MenuOperation();
+                                    operation.performTask();
+//                                } while (choice!=5);
                             }
                             else {
                                 System.out.println("Access denied");

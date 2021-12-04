@@ -12,14 +12,14 @@ public class Menu {
         return input.nextInt();
     }
 
-    public static int operationMenu(){
+    public static String operationMenu(){
         System.out.println("1. Write Queries");
         System.out.println("2. Export");
         System.out.println("3. Data Model");
         System.out.println("4. Analytics");
         System.out.println("5. Logout");
         System.out.println("Select an option: ");
-        return input.nextInt();
+        return input.next();
     }
 
 }
