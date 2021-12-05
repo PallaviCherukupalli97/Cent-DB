@@ -1,0 +1,2 @@
+05-12-2021 23:02:07 : Started	Timestamp of the query :	ts
+05-12-2021 23:02:07 : java.lang.ArithmeticException: / by zero	Timestamp of the query :	ts
