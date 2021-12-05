@@ -1,14 +1,13 @@
 package QueryParser;
 
 import Operations.DatabaseOperation;
-import Operations.RegexOperations;
+import Operations.Validator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Parser {
-    public String takeInput(){
+    public String takeInput() {
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
         String temp = sc.nextLine();
@@ -16,32 +15,33 @@ public class Parser {
     }
 
     public boolean validQuery(String query) {
-        if(query.charAt(query.length() - 1) == ';'){
+        if (query.charAt(query.length() - 1) == ';') {
             return true;
-        }else {
+        } else {
             System.out.println("Query is invalid");
             return false;
         }
     }
 
-    public void executeQuery(String query){
-        query = query.substring(0, query.length()-1);
+    public void executeQuery(String query) {
+        query = query.substring(0, query.length() - 1);
 //        System.out.println("Executing query");
         String task = query.split(" ")[0];
 
         DatabaseOperation databaseOperation = new DatabaseOperation();
 
-        switch (task.toUpperCase()){
+        switch (task.toUpperCase()) {
             case "CREATE":
 
                 String keyword = query.split(" ")[1];
                 String name = query.split(" ")[2];
-                if(keyword.equalsIgnoreCase("database")){
+                if (keyword.equalsIgnoreCase("database")) {
                     databaseOperation.createDatabase(name);
 //                    call create table method
-                }else if(keyword.equalsIgnoreCase("table")){
-                    List<String> column_data = RegexOperations.getColumnValues(query);
-                    databaseOperation.createTable(name, column_data);
+                } else if (keyword.equalsIgnoreCase("table")) {
+                    List<String> column_titles = Validator.getColumnNames(query);
+                    System.out.println(column_titles);
+                    databaseOperation.createTable(name, column_titles);
 
 //                    check if database is selected
 //                    call create database method
@@ -55,28 +55,81 @@ public class Parser {
 
 
                 break;
+
+
+            case "SELECT":
+                String token = query.split(" ")[1];
+                String tableName = query.split(" ")[3];
+                if (Validator.validateSelectQuery(query)) {
+                    if (token.equals("*")) {
+                        // SELECT * FROM p1
+                        databaseOperation.selectFullTable(tableName, query);
+                    } else {
+                        // SELECT id from p1
+                        String column_name = query.split(" ")[1];
+                        databaseOperation.selectColumnFromTable(tableName, query);
+
+                    }
+
+                } else {
+                    System.out.println("Invalid query. Please try again");
+                }
+
+
+                break;
             case "INSERT":
-                if(RegexOperations.validInsertQuery(query)){
-                    List<String> column_values = RegexOperations.getColumnValues(query);
-                    List<String> column_names = RegexOperations.getColumnNames(query);
-                    String tableName = query.split(" ")[2];
+                if (Validator.validateInsertQuery(query)) {
+                    List<String> column_values = Validator.getColumnValues(query);
+//                    List<String> column_names =  RegexOperations.getColumnNames(query);
+                    String table = query.split(" ")[2];
 
-                    databaseOperation.insertRow(tableName,column_names,column_values);
+                    databaseOperation.insertRow(table, column_values);
 
-//                    System.out.println("Table name: " + tableName);
-//                    System.out.println("Column names: " + Arrays.toString(column_names.toArray()));
-//                    System.out.println("Column values: " + Arrays.toString(column_values.toArray()));
-
-
-
-//                    databaseOperation.insertRow(tableName, column_names, values);
-
-                }else{
+                } else {
                     System.out.println("Invalid query. Please try again.");
                 }
 
                 break;
+
+
+            case "DELETE":
+                if(Validator.validateDeleteQuery(query)){
+                    tableName = query.split(" ")[2];
+                    databaseOperation.deleteRow(tableName, query);
+
+
+                }else {
+                    System.out.println("Invalid query. Please try again");
+                }
+
+
+                break;
+            case "DROP":
+                if (Validator.validateDropQuery(query)) {
+                    String token1 = query.split(" ")[1];
+                    if (token1.equalsIgnoreCase("database")) {
+                        database_name = query.split(" ")[2];
+                        databaseOperation.dropDatabase(database_name);
+                    } else if (token1.equalsIgnoreCase("table")) {
+                        tableName = query.split(" ")[2];
+                        databaseOperation.dropTable(tableName);
+                    }
+
+                } else {
+                    System.out.println("Invalid query. Please try again.");
+                }
+
+
+                break;
+
             case "UPDATE":
+                if(Validator.validateUpdateQuery(query)){
+                    tableName = query.split(" ")[1];
+                    databaseOperation.updateTable(tableName, query);
+
+                } else {
+                    System.out.println("Invalid query. Please try again.");
+                }
 
                 break;
             default:
