@@ -1,2 +1,3 @@
-05-12-2021 23:02:07 : Started	Timestamp of the query :	ts
-05-12-2021 23:02:07 : java.lang.ArithmeticException: / by zero	Timestamp of the query :	ts
+06-12-2021 00:39:47 : create database test3;
+06-12-2021 00:39:47 : drop database test2;
+06-12-2021 00:51:21 : create database test4;

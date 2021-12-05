@@ -1,9 +1,20 @@
 package Operations;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import Dump.DumpManager;
+import LogManagement.LogManager;
 import QueryParser.Parser;
 import UserInterface.Menu;
 
 public class MenuOperation {
+	
+	LogManager lm = new LogManager();
+	DumpManager dm = new DumpManager();
+	LocalDateTime currentDT = LocalDateTime.now();
+	String timestamp = currentDT.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+	
     public void performTask(){
         String choice = "";
 
@@ -15,6 +26,8 @@ public class MenuOperation {
                 case "1":
                     Parser parser = new Parser();
                     String query = parser.takeInput();
+                    lm.queryLog(query,timestamp);
+                    dm.exportDump(query);
                     if(parser.validQuery(query)){
                         parser.executeQuery(query);
                     }
