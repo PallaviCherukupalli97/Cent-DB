@@ -1,0 +1,3 @@
+06-12-2021 00:39:47 : create database test3;
+06-12-2021 00:39:47 : drop database test2;
+06-12-2021 00:51:21 : create database test4;
