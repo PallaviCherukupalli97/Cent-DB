@@ -61,15 +61,15 @@ public class Parser {
                 String token = query.split(" ")[1];
                 String tableName = query.split(" ")[3];
                 if (Validator.validateSelectQuery(query)) {
-                    if (token.equals("*")) {
+//                    if (token.equals("*")) {
                         // SELECT * FROM p1
                         databaseOperation.selectFullTable(tableName, query);
-                    } else {
+//                    } else {
                         // SELECT id from p1
-                        String column_name = query.split(" ")[1];
-                        databaseOperation.selectColumnFromTable(tableName, query);
+//                        String column_name = query.split(" ")[1];
+//                        databaseOperation.selectColumnFromTable(tableName, query);
 
-                    }
+//                    }
 
                 } else {
                     System.out.println("Invalid query. Please try again");

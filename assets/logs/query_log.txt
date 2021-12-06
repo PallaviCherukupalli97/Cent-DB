@@ -1,3 +1,9 @@
 06-12-2021 00:39:47 : create database test3;
 06-12-2021 00:39:47 : drop database test2;
 06-12-2021 00:51:21 : create database test4;
+06-12-2021 01:52:17 : create database prit;
+06-12-2021 01:52:29 : select * from prit;
+06-12-2021 01:52:33 : use prit;
+06-12-2021 01:52:59 : create table p1 (name varchar, age int);
+06-12-2021 01:53:44 : insert into p1 (name,age) values (Prit,23);
+06-12-2021 01:54:09 : update p1 set name=Jay where age=23;
