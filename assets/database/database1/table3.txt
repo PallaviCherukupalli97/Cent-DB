@@ -1,0 +1,2 @@
+animal varchar:legs int:
+octopus:8:

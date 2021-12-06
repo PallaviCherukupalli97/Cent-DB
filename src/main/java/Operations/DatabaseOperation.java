@@ -170,7 +170,7 @@ public class DatabaseOperation {
 
                 FileOperations io = new FileOperations();
                 List<List<String>> resultSet = io.readTable(tableName);
-                System.out.println("ResultSet: \n" + resultSet);
+                System.out.println("ResultSet:\n" + resultSet);
 
                 int del_index = -1;
                 for(int i=0; i<resultSet.size();i++)

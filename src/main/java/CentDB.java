@@ -13,12 +13,12 @@ public class CentDB {
 
             choice = Menu.mainMenu();
             switch (choice) {
-                case 1 -> {
+                case 1 : {
 //                    System.out.println("Call Registration code");
                     Registration.registerUser();
                     //Register new user
                 }
-                case 2 -> {
+                case 2 : {
 
 
 //                    System.out.println("Call Login code");
@@ -26,11 +26,11 @@ public class CentDB {
                     // Login User
                 }
 
-                case 0 -> {
+                case 0 : {
                     System.out.println("Exiting application...");
                     System.exit(0);
                 }
-                default -> System.out.println("Invalid selection! Please try again.");
+                default : System.out.println("Invalid selection! Please try again.");
 
         }
     }

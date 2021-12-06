@@ -1,12 +1,11 @@
 package Operations;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import Dump.DumpManager;
-import LogManagement.LogManager;
+import MetaData.MetaDataGeneratorClass;
 import QueryParser.Parser;
 import UserInterface.Menu;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class MenuOperation {
 
@@ -26,7 +25,18 @@ public class MenuOperation {
                     break;
 
                 case "2":
-                    System.out.println("Implement Export feature here");
+                    MetaDataGeneratorClass metaDataGeneratorclass = new MetaDataGeneratorClass();
+                    String temp1 = metaDataGeneratorclass.takeInput();
+                    if(metaDataGeneratorclass.validateDatabase(temp1)) {
+                        metaDataGeneratorclass.MetaDataGenerator(temp1);
+                    }
+
+//
+//                    String databaseName = metaDataGeneratorclass.takeInput();
+//                    if(metaDataGeneratorclass.validateDatabase(databaseName)){
+//                        metaDataGeneratorclass.MetaDataGenerator(databaseName);
+
+
 //                Export
                     break;
 
