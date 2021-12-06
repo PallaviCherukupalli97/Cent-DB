@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Parser {
+    List<String> column_titles;
     public String takeInput() {
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
@@ -39,7 +40,7 @@ public class Parser {
                     databaseOperation.createDatabase(name);
 //                    call create table method
                 } else if (keyword.equalsIgnoreCase("table")) {
-                    List<String> column_titles = Validator.getColumnNames(query);
+                    column_titles = Validator.getColumnNames(query);
                     System.out.println(column_titles);
                     databaseOperation.createTable(name, column_titles);
 

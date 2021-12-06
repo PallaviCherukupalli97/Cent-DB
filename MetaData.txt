@@ -1,0 +1,6 @@
+Table Name:Name:Datatype 
+table5.txt:name:varchar
+table5.txt:pet:varchar
+table5.txt:age:int
+table3.txt:animal:varchar
+table3.txt:legs:int

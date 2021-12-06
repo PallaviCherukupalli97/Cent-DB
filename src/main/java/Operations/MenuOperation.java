@@ -1,21 +1,14 @@
 package Operations;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import Dump.DumpManager;
-import LogManagement.LogManager;
+import MetaData.MetaDataGeneratorClass;
 import QueryParser.Parser;
 import UserInterface.Menu;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class MenuOperation {
-	
-	LogManager lm = new LogManager();
-	DumpManager dm = new DumpManager();
-	LocalDateTime currentDT = LocalDateTime.now();
-	String timestamp = currentDT.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-	
-    public void performTask(){
+    public void performTask() throws IOException {
         String choice = "";
 
         while (true){
@@ -26,8 +19,6 @@ public class MenuOperation {
                 case "1":
                     Parser parser = new Parser();
                     String query = parser.takeInput();
-                    lm.queryLog(query,timestamp);
-                    dm.exportDump(query);
                     if(parser.validQuery(query)){
                         parser.executeQuery(query);
                     }
@@ -36,7 +27,18 @@ public class MenuOperation {
                     break;
 
                 case "2":
-                    System.out.println("Implement Export feature here");
+                    MetaDataGeneratorClass metaDataGeneratorclass = new MetaDataGeneratorClass();
+                    String temp1 = metaDataGeneratorclass.takeInput();
+                    if(metaDataGeneratorclass.validateDatabase(temp1)) {
+                        metaDataGeneratorclass.MetaDataGenerator(temp1);
+                    }
+
+//
+//                    String databaseName = metaDataGeneratorclass.takeInput();
+//                    if(metaDataGeneratorclass.validateDatabase(databaseName)){
+//                        metaDataGeneratorclass.MetaDataGenerator(databaseName);
+
+
 //                Export
                     break;
 
