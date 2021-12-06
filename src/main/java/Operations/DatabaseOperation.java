@@ -30,27 +30,11 @@ public class DatabaseOperation {
             System.out.println("No database selected. Please select a database first.");
         } else {
             try {
-//                System.out.println("Table name: " + tableName);
-//                System.out.println("Values: " + Arrays.toString(column_titles.toArray()));
-
-                //TODO
-                // Store tableName and column_titles into data dictionary as follows
-                // tableName = "Person", column_titles = List of String where each string is: "column_name datatype"
-                // <Table name> <column1_name> <column1_datatype> <column2_name> <column2_datatype>
-
                 File table = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/" + tableName + ".txt");
                 if (table.createNewFile()) {
                     System.out.println("Table created: " + tableName);
-
                     FileOperations io = new FileOperations();
-//                    List<String> column_titles = new ArrayList<>();
-//                    for(String s: column_titles){
-//                        column_titles.add(s.trim().split(" ")[0]);
-//                    }
                     io.appendHashMap(tableName, column_titles);
-
-
-//Write file
                 } else {
                     System.out.println("Table already exists.");
                 }
@@ -58,7 +42,6 @@ public class DatabaseOperation {
                 System.out.println("Exception: " + e.toString());
             }
         }
-
     }
 
     public void insertRow(String tableName, List<String> column_values) {
@@ -67,13 +50,10 @@ public class DatabaseOperation {
 
         if (list_of_tables.contains(tableName + ".txt")) {
             FileOperations io = new FileOperations();
-//            System.out.println("A aavyu!" + column_values);
-
             io.appendHashMap(tableName, column_values);
         } else {
             System.out.println("Table '" + tableName + "' does not exist in database '" + DatabaseSetting.SELECTED_DATABASE + "'.");
         }
-
     }
 
     public void selectFullTable(String tableName, String query) {
@@ -89,9 +69,7 @@ public class DatabaseOperation {
 
                 if (query.contains("where") || query.contains("WHERE")) {
 
-//                    String find_col = query.split(" ")[5].split("=")[0];
                     String find_val = query.split(" ")[5].split("=")[1];
-
                     List<Integer> index_found = new ArrayList<>();
                     List<String> columns = resultSet.get(0);
                     for (int i = 1; i < resultSet.size(); i++) {
@@ -117,10 +95,8 @@ public class DatabaseOperation {
                     } else {
                         System.out.println("No records found");
                     }
-                    //////////////////
 
                 } else {
-//                    displaying full table
                     List<String> columns = resultSet.get(0);
                     for (String s : columns)
                         System.out.printf("%10s|", s.trim().split(" ")[0]);
@@ -130,35 +106,28 @@ public class DatabaseOperation {
                             System.out.printf("%10s|", s);
                         System.out.println();
                     }
-
                 }
-
-
-            } else {
-                System.out.println("Table '" + tableName + "' does not exist.");
-            }
-
-        }
-
-    }
-
-    public void selectColumnFromTable(String tableName, String query) {
-        if (DatabaseSetting.SELECTED_DATABASE == null) {
-            System.out.println("No database selected.");
-        } else {
-            File file = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/");
-            List<String> list_of_tables = List.of(file.list());
-            if (list_of_tables.contains(tableName + ".txt")) {
-
-                FileOperations io = new FileOperations();
-                List<List<String>> resultSet = io.readTable(tableName);
-
-
             } else {
                 System.out.println("Table '" + tableName + "' does not exist.");
             }
         }
     }
+
+//    public void selectColumnFromTable(String tableName, String query) {
+//        if (DatabaseSetting.SELECTED_DATABASE == null) {
+//            System.out.println("No database selected.");
+//        } else {
+//            File file = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/");
+//            List<String> list_of_tables = List.of(file.list());
+//            if (list_of_tables.contains(tableName + ".txt")) {
+//                FileOperations io = new FileOperations();
+//                List<List<String>> resultSet = io.readTable(tableName);
+//
+//            } else {
+//                System.out.println("Table '" + tableName + "' does not exist.");
+//            }
+//        }
+//    }
 
     public void dropDatabase(String dbName) {
         File database = new File(System.getProperty("user.dir") + "/assets/database/" + dbName);
@@ -209,20 +178,9 @@ public class DatabaseOperation {
                             del_index = i;
                 resultSet.remove(del_index);
 
-                System.out.println("Updated: \n" + resultSet);
-
-
-//                FileOperations io = new FileOperations();
                 io.clearFile(tableName);
                 for(List<String> stt: resultSet)
                     io.appendHashMap(tableName, stt);
-
-
-
-
-
-
-
             }else {
                 System.out.println("Table '" + tableName + "' does not exist. Please try again.");
             }
@@ -265,12 +223,6 @@ public class DatabaseOperation {
                 io.clearFile(tableName);
                 for(List<String> stt: resultSet)
                     io.appendHashMap(tableName, stt);
-
-
-
-
-
-
 
             }else {
                 System.out.println("Table '" + tableName + "' does not exist. Please try again.");

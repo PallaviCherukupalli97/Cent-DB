@@ -9,30 +9,20 @@ import QueryParser.Parser;
 import UserInterface.*;
 
 public class MenuOperation {
-	
-	LogManager lm = new LogManager();
-	DumpManager dm = new DumpManager();
-	LocalDateTime currentDT = LocalDateTime.now();
-	String timestamp = currentDT.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
-	
-    public void performTask(){
+
+    public void performTask() {
         String choice = "";
-
-        while (true){
-
+        while (true) {
             choice = Menu.operationMenu();
-
-            switch (choice){
+            switch (choice) {
                 case "1":
                     Parser parser = new Parser();
                     String query = parser.takeInput();
-                    lm.queryLog(query,timestamp);
-                    dm.exportDump(query);
-                    if(parser.validQuery(query)){
+                    LogManager.queryLog(query);
+                    DumpManager.exportDump(query);
+                    if (parser.validQuery(query)) {
                         parser.executeQuery(query);
                     }
-
-//                write queries
                     break;
 
                 case "2":
@@ -57,11 +47,6 @@ public class MenuOperation {
                 default:
                     System.out.println("Invalid choice. Please try again");
             }
-
-
-
         }
-
-
     }
 }
