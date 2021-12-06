@@ -13,7 +13,7 @@ public class MetaDataGeneratorClass {
     }
 
     public boolean validateDatabase(String databaseName) throws FileNotFoundException {
-        File directoryPath = new File("/Users/rishika/Documents/Dalhousie University/5408/Project/5408 Team Repo/csci5408_teamg11_centdb/assets/database");
+        File directoryPath = new File("./assets/database");
         String databases[] = directoryPath.list();
         for (int i = 0; i < databases.length; i++) {
             if (databases[i].equals(databaseName)) {
@@ -24,14 +24,14 @@ public class MetaDataGeneratorClass {
     }
 
     public void MetaDataGenerator(String databaseName) throws IOException {
-        String tableLocation = "/Users/rishika/Documents/Dalhousie University/5408/Project/5408 Team Repo/csci5408_teamg11_centdb/assets/database/" + databaseName + "/";
+        String tableLocation = "./assets/database/" + databaseName + "/";
         File Tables = new File(tableLocation);
         String tables[] = Tables.list();
         String Print = null;
         ArrayList<String> ar = new ArrayList<String>();
         for (int i = 0; i < tables.length; i++) {
             String tableName = tables[i];
-            String tableDataLocation = "/Users/rishika/Documents/Dalhousie University/5408/Project/5408 Team Repo/csci5408_teamg11_centdb/assets/database/" + databaseName + "/" + tableName;
+            String tableDataLocation = "./assets/database/" + databaseName + "/" + tableName;
             try {
                 FileInputStream fstream = new FileInputStream(tableDataLocation);
                 DataInputStream in = new DataInputStream(fstream);
