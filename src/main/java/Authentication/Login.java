@@ -26,7 +26,6 @@ public class Login {
             String eachLine = "";
             BufferedReader br = new BufferedReader(new FileReader( System.getProperty("user.dir") + "/assets/auth/User_Profile.txt"));
             while((eachLine = br.readLine()) != null) {
-//                System.out.println("New line " + eachLine);
                 String[] values = eachLine.split("\n");
                 for (String val: values) {
                     String hash = Hash.getHash(username);
@@ -39,13 +38,9 @@ public class Login {
                             String answer = sc.nextLine();
                             if(answer.equals((val.split(" ; ")[3]).replace(" ",""))) {
                                 System.out.println("Access granted: User " + username + " logged in successfully.");
-//                                giveOptions();
-//                                int choice = 0;
-//                                do {
-//                                    choice = Menu.operationMenu();
                                     MenuOperation operation = new MenuOperation();
                                     operation.performTask();
-//                                } while (choice!=5);
+//                                }
                             }
                             else {
                                 System.out.println("Access denied");

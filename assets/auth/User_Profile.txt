@@ -1,9 +1,1 @@
 UserID ; Password ; SecurityQuestion ; SecurityAnswer
-
-a79bba7449b8183812a4fbce47bcd23b ; a4e8544b33af05b26ba8668a16ac04ff ; What's your name? ; SanjunaKonsa
-ba83408a3df4fec155c29ec2f2eff044 ; 4d0fef3280b8c1356077de7363a8b893 ; What's my name? ; Jay
-900150983cd24fb0d6963f7d28e17f72 ; 900150983cd24fb0d6963f7d28e17f72 ; abc ; abc
-b2ca678b4c936f905fb82f2733f5297f ; b2ca678b4c936f905fb82f2733f5297f ; qqq ; qqq
-14c4b06b824ec593239362517f538b29 ; 5f4dcc3b5aa765d61d8327deb882cf99 ; sq ; sa
-25ed1bcb423b0b7200f485fc5ff71c8e ; 25ed1bcb423b0b7200f485fc5ff71c8e ; zz ; zz
-4d0fef3280b8c1356077de7363a8b893 ; 4d0fef3280b8c1356077de7363a8b893 ; What is my last name? ; Sonani
