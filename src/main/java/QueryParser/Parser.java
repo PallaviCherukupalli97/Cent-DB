@@ -1,17 +1,32 @@
 package QueryParser;
 
-import Operations.DatabaseOperation;
-import Operations.Validator;
+import Operations.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
+import Preferences.*;
 
 public class Parser {
     public String takeInput() {
+        System.out.println("Enter 'done' in a new line after writing the query");
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
-        String temp = sc.nextLine();
-        return temp;
+        String query = new String();
+        while (sc.hasNextLine()) {
+            String input = sc.nextLine();
+            if (Objects.equals(input, "done"))
+            {
+                break;
+            }
+            if(query.length() != 0)
+            {
+                query = query.concat("\r\n");
+            }
+            query = query.concat(input);
+        }
+        return query;
     }
 
     public boolean validQuery(String query) {
@@ -93,12 +108,12 @@ public class Parser {
 
 
             case "DELETE":
-                if(Validator.validateDeleteQuery(query)){
+                if (Validator.validateDeleteQuery(query)) {
                     tableName = query.split(" ")[2];
                     databaseOperation.deleteRow(tableName, query);
 
 
-                }else {
+                } else {
                     System.out.println("Invalid query. Please try again");
                 }
 
@@ -123,7 +138,7 @@ public class Parser {
                 break;
 
             case "UPDATE":
-                if(Validator.validateUpdateQuery(query)){
+                if (Validator.validateUpdateQuery(query)) {
                     tableName = query.split(" ")[1];
                     databaseOperation.updateTable(tableName, query);
 
@@ -132,12 +147,26 @@ public class Parser {
                 }
 
                 break;
+
+            case "BEGIN":
+                if (Validator.validateTransactionQuery(query)) {
+                    if (DatabaseSetting.SELECTED_DATABASE == null) {
+                        System.out.println("Database not selected");
+                    } else {
+                        String[] queryLines = query.split("\r\n");
+                        for (int i = 1; i < queryLines.length; i++) {
+                            if (!(queryLines[i].split(" ")[0]).toLowerCase().startsWith("commit") && !(queryLines[i].split(" ")[0]).toLowerCase().startsWith("end")) {
+                                executeQuery(queryLines[i]);
+                            }
+                        }
+
+                    }
+                }
+                break;
+
             default:
                 System.out.println("Invalid query syntax");
                 break;
         }
-
     }
-
-
 }

@@ -1,6 +1,6 @@
 package Operations;
 
-import Preferences.DatabaseSetting;
+import Preferences.*;
 
 import java.io.*;
 import java.util.*;

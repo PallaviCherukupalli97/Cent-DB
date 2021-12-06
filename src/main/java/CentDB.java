@@ -1,7 +1,7 @@
 import Authentication.Login;
-import Authentication.Registration;
-import Preferences.DatabaseSetting;
-import UserInterface.Menu;
+import Authentication.*;
+import Preferences.*;
+import UserInterface.*;
 
 public class CentDB {
     public static void main(String[] args) {

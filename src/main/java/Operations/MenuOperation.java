@@ -1,7 +1,7 @@
 package Operations;
 
 import QueryParser.Parser;
-import UserInterface.Menu;
+import UserInterface.*;
 
 public class MenuOperation {
     public void performTask(){
