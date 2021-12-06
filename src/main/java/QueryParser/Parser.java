@@ -10,21 +10,28 @@ import Preferences.*;
 
 public class Parser {
     public String takeInput() {
-        System.out.println("Enter 'done' in a new line after writing the query");
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
         String query = new String();
         while (sc.hasNextLine()) {
             String input = sc.nextLine();
-            if (Objects.equals(input, "done"))
-            {
-                break;
+            if (input.toLowerCase().startsWith("begin") || query.toLowerCase().startsWith("begin")) {
+                if (input.toLowerCase().startsWith("end") || input.toLowerCase().startsWith("commit")) {
+                    query = query.concat(input);
+                    break;
+                }
+                query = query.concat(input);
+                if (query.length() != 0) {
+                    query = query.concat("\r\n");
+                }
             }
-            if(query.length() != 0)
-            {
-                query = query.concat("\r\n");
+            else {
+                if(query.length() == 0)
+                {
+                    query = query.concat(input);
+                    break;
+                }
             }
-            query = query.concat(input);
         }
         return query;
     }
