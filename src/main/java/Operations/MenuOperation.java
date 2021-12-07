@@ -1,8 +1,9 @@
 package Operations;
 
+import Analytics.AnalyticsGenerator;
 import Dump.DumpManager;
 import LogManagement.LogManager;
-import MetaData.MetaDataGenerator;
+import DataDictionary.DataDictionary;
 import QueryParser.Parser;
 import UserInterface.*;
 
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 public class MenuOperation {
 
-    public void performTask() {
+    public void performTask() throws IOException {
         String choice = "";
         while (true) {
             choice = Menu.operationMenu();
@@ -26,17 +27,7 @@ public class MenuOperation {
                     break;
 
                 case "2":
-                    MetaDataGenerator metaDataGenerator = new MetaDataGenerator();
-                    String databaseName = metaDataGenerator.takeInput();
-                    try {
-                        if(metaDataGenerator.validateDatabase(databaseName)) {
-                            metaDataGenerator.generateMetaData(databaseName);
-                        }else{
-                            System.out.println("Database '" + databaseName + "' not found. Please try again.");
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
 
 //                Export
                     break;
@@ -47,10 +38,31 @@ public class MenuOperation {
                     break;
 
                 case "4":
-                    System.out.println("Implement analytics feature here");
+                    AnalyticsGenerator analyticsInfo = new AnalyticsGenerator();
+                    analyticsInfo.countTotalQueries();
+                    analyticsInfo.numberOfDatabases();
+                    analyticsInfo.numberOfTables();
+                    analyticsInfo.numberOfTablesInEachDatabase();
+                    analyticsInfo.numberOfValidQueries();
 //                Analytics
                     break;
+
                 case "5":
+                    DataDictionary dataDictionary = new DataDictionary();
+                    String databaseName = dataDictionary.takeInput();
+                    try {
+                        if(dataDictionary.validateDatabase(databaseName)) {
+                            dataDictionary.generateDataDictionary(databaseName);
+                        }else{
+                            System.out.println("Database '" + databaseName + "' not found. Please try again.");
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+//                Data Dictionary
+                    break;
+
+                case "6":
                     System.out.println("Implement logout feature here");
 //                logout
                     break;

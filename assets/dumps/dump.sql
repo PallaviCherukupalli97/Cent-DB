@@ -26,3 +26,15 @@ begin transaction
 select * from test1;
 select * from test1 where name=prit;
 commit;
+use database1;
+insert into table3 (animal,legs) values (bird,2);
+update table3 set legs=12 where animal=octopus;
+create table table5;
+use database1;
+create table table5;
+insert into table3 (animal,legs) values (dog,4);
+use database1;
+use database1;
+String temp = sc.nextLine();
+insert into table3 (animal,legs) values (cat,4);
+update table3 set legs=5 where animal=cat;
