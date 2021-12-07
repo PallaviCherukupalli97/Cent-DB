@@ -2,12 +2,18 @@ package QueryParser;
 
 import Operations.*;
 
+<<<<<<< HEAD
+=======
+import java.io.*;
+import java.util.ArrayList;
+>>>>>>> e7e02ae60e1c098efeca988d25b8c1b3a7e65941
 import java.util.List;
 import java.util.Scanner;
 import Preferences.*;
 
 public class Parser {
-    public String takeInput() {
+    List<String> column_titles;
+    public String takeInput() throws IOException {
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
@@ -39,7 +45,7 @@ public class Parser {
                     databaseOperation.createDatabase(name);
 //                    call create table method
                 } else if (keyword.equalsIgnoreCase("table")) {
-                    List<String> column_titles = Validator.getColumnNames(query);
+                    column_titles = Validator.getColumnNames(query);
                     System.out.println(column_titles);
                     databaseOperation.createTable(name, column_titles);
 

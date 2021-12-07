@@ -1,8 +1,8 @@
 package Authentication;
 
 import Operations.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
+
+import java.io.*;
 import java.util.Scanner;
 
 public class Login {
@@ -38,7 +38,16 @@ public class Login {
                             String answer = sc.nextLine();
                             if(answer.equals((val.split(" ; ")[3]).replace(" ",""))) {
                                 System.out.println("Access granted: User " + username + " logged in successfully.");
-                                    MenuOperation operation = new MenuOperation();
+                                File file = new File("./assets/recordInputs/Inputs.txt");
+                                file.getParentFile().mkdirs();
+                                FileWriter fr = new FileWriter(file, true);
+                                BufferedWriter br1 = new BufferedWriter(fr);
+                                PrintWriter pr = new PrintWriter(br1);
+                                pr.println(username + ":");
+                                pr.close();
+                                br.close();
+                                fr.close();
+                                MenuOperation operation = new MenuOperation();
                                     operation.performTask();
 //                                }
                             }
