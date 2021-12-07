@@ -62,11 +62,6 @@ public class MenuOperation {
 //                Data Dictionary
                     break;
 
-                case "6":
-                    System.out.println("Implement logout feature here");
-//                logout
-                    break;
-
                 default:
                     System.out.println("Invalid choice. Please try again");
             }
