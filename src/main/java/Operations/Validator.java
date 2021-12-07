@@ -1,9 +1,6 @@
 package Operations;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -79,6 +76,16 @@ public class Validator {
         if(query.split(" ")[2].equalsIgnoreCase("set") && query.split(" ")[4].equalsIgnoreCase("where")){
             return true;
         }else{
+            return false;
+        }
+    }
+
+    public static boolean validateTransactionQuery(String query){
+        if((query.split(" ")[1].toLowerCase()).startsWith("transaction")){
+            return true;
+        }
+        else
+        {
             return false;
         }
     }

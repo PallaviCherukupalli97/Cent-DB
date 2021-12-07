@@ -4,7 +4,7 @@ import Dump.DumpManager;
 import LogManagement.LogManager;
 import MetaData.MetaDataGenerator;
 import QueryParser.Parser;
-import UserInterface.Menu;
+import UserInterface.*;
 
 import java.io.IOException;
 

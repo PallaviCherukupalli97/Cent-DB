@@ -1,7 +1,6 @@
 package Authentication;
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
@@ -22,19 +21,37 @@ public class Registration {
         String hashedUserID = Hash.getHash(userID);
         String hashedPassword = Hash.getHash(password);
 // Write into a file
-        createFile(hashedUserID, hashedPassword, securityQuestion,securityAnswer);
+        createFile(hashedUserID, hashedPassword, securityQuestion, securityAnswer);
     }
 
     private static void createFile(String hashedUserID, String hashedPassword, String securityQuestion, String securityAnswer) {
         try {
             FileWriter myWriter = new FileWriter(System.getProperty("user.dir") + "/assets/auth/User_Profile.txt", true);
-            //Data
-            myWriter.write("\r\n"+hashedUserID + " ; " + hashedPassword + " ; " + securityQuestion + " ; " + securityAnswer);
-            myWriter.close();
-            System.out.println("User registered successfully.");
-        }
-        catch(Exception e) {
+            if (newUser(hashedUserID)) {
+                //Data
+                myWriter.write("\r\n" + hashedUserID + " ; " + hashedPassword + " ; " + securityQuestion + " ; " + securityAnswer);
+                myWriter.close();
+                System.out.println("User registered successfully.");
+            }
+        } catch (Exception e) {
             System.out.println("Exception occurred: " + e.toString());
         }
+    }
+
+    private static boolean newUser(String hashedID) throws IOException {
+        String eachLine = "";
+        //Check if user exists
+        BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/assets/auth/User_Profile.txt"));
+        while ((eachLine = br.readLine()) != null) {
+            String[] lines = eachLine.split("\n");
+            for (String line : lines) {
+                String[] values = line.split(" ; ");
+                if (hashedID.equals(values[0])) {
+                    System.out.println("User already exists");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
