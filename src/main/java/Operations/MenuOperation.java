@@ -1,11 +1,14 @@
 package Operations;
 
-import Analytics.AnalyticsGenerator;
+import java.io.File;
 import Dump.DumpManager;
 import LogManagement.LogManager;
+import Preferences.DatabaseSetting;
+import Analytics.AnalyticsGenerator;
 import DataDictionary.DataDictionary;
 import QueryParser.Parser;
 import UserInterface.*;
+import Transactions.Transactions;
 
 import java.io.IOException;
 
@@ -19,10 +22,44 @@ public class MenuOperation {
                 case "1":
                     Parser parser = new Parser();
                     String query = parser.takeInput();
-                    LogManager.queryLog(query);
-                    DumpManager.exportDump(query);
-                    if (parser.validQuery(query)) {
-                        parser.executeQuery(query);
+                    Transactions transactions = new Transactions();
+                    File sourceDirectory = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE);
+                    File targetDirectory = new File(System.getProperty("user.dir") + "/assets/database/transactionDatabase");
+                    if(query.toLowerCase().startsWith("begin"))
+                    {
+                        transactions.copyDatabase(sourceDirectory, targetDirectory);
+                        DatabaseSetting.TRANSACTION_DATABASE = DatabaseSetting.SELECTED_DATABASE;
+                        transactions.changeGlobalDb("transactionDatabase");
+                        //take input
+                        while(true){
+                            if(query.toLowerCase().startsWith("commit") || query.toLowerCase().startsWith("rollback")) {
+                                if(query.toLowerCase().startsWith("commit"))
+                                {
+                                    // replace original db with transactiondb
+                                    transactions.copyDatabase(targetDirectory, sourceDirectory);
+                                    System.out.println("Transaction committed successfully");
+                                }else{
+                                    System.out.println("Transaction rollback successfully");
+                                }
+                                DatabaseSetting.SELECTED_DATABASE = DatabaseSetting.TRANSACTION_DATABASE;
+                                DatabaseSetting.TRANSACTION_DATABASE = null;
+                                break;
+                            }
+                            query = parser.takeInput();
+                            if(!query.toLowerCase().startsWith("commit")) {
+                                parser.executeQuery(query);
+                            }
+                        }
+                       //delete trans db
+                        transactions.deleteTransactionDatabase(targetDirectory);
+                    }
+                    else
+                    {
+                        LogManager.queryLog(query);
+                        DumpManager.exportDump(query);
+                        if (parser.validQuery(query)) {
+                            parser.executeQuery(query);
+                        }
                     }
                     break;
 

@@ -2,10 +2,12 @@ package QueryParser;
 
 import Operations.*;
 
+<<<<<<< HEAD
+=======
 import java.io.*;
 import java.util.ArrayList;
+>>>>>>> e7e02ae60e1c098efeca988d25b8c1b3a7e65941
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 import Preferences.*;
 
@@ -14,39 +16,8 @@ public class Parser {
     public String takeInput() throws IOException {
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
-        String query = new String();
-
-        while (sc.hasNextLine()) {
-            String input = sc.nextLine();
-            if (input.toLowerCase().startsWith("begin") || query.toLowerCase().startsWith("begin")) {
-                if (input.toLowerCase().startsWith("end") || input.toLowerCase().startsWith("commit")) {
-                    query = query.concat(input);
-                    break;
-                }
-                query = query.concat(input);
-                if (query.length() != 0) {
-                    query = query.concat("\r\n");
-                }
-            }
-            else {
-                if(query.length() == 0)
-                {
-                    query = query.concat(input);
-                    break;
-                }
-            }
-        }
-
-        File file = new File("./assets/recordInputs/Inputs.txt");
-        file.getParentFile().mkdirs();
-        FileWriter fr = new FileWriter(file, true);
-        BufferedWriter br = new BufferedWriter(fr);
-        PrintWriter pr = new PrintWriter(br);
-        pr.println(query);
-        pr.close();
-        br.close();
-        fr.close();
-        return query;
+        String input = sc.nextLine();
+        return input;
     }
 
     public boolean validQuery(String query) {
@@ -166,22 +137,6 @@ public class Parser {
                     System.out.println("Invalid query. Please try again.");
                 }
 
-                break;
-
-            case "BEGIN":
-                if (Validator.validateTransactionQuery(query)) {
-                    if (DatabaseSetting.SELECTED_DATABASE == null) {
-                        System.out.println("Database not selected");
-                    } else {
-                        String[] queryLines = query.split("\r\n");
-                        for (int i = 1; i < queryLines.length; i++) {
-                            if (!(queryLines[i].split(" ")[0]).toLowerCase().startsWith("commit") && !(queryLines[i].split(" ")[0]).toLowerCase().startsWith("end")) {
-                                executeQuery(queryLines[i]);
-                            }
-                        }
-
-                    }
-                }
                 break;
 
             default:
