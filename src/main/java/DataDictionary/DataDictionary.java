@@ -1,15 +1,15 @@
-package MetaData;
+package DataDictionary;
 
 import java.io.*;
 import java.util.*;
 
-public class MetaDataGenerator {
+public class DataDictionary {
 
     public String takeInput() {
         System.out.println("Enter the name of the database you want metadata for: ");
         Scanner sc = new Scanner(System.in);
-        String databaseName = sc.nextLine();
-        return databaseName;
+        String temp = sc.nextLine();
+        return temp;
     }
 
     public boolean validateDatabase(String databaseName) throws FileNotFoundException {
@@ -23,7 +23,7 @@ public class MetaDataGenerator {
         return false;
     }
 
-    public void generateMetaData(String databaseName) throws IOException {
+    public void generateDataDictionary(String databaseName) throws IOException {
         String tableLocation = "./assets/database/" + databaseName + "/";
         File Tables = new File(tableLocation);
         String tables[] = Tables.list();
@@ -41,7 +41,7 @@ public class MetaDataGenerator {
                 String[] splitter = strLine.split(":");
                 for (String nameDatatype : splitter) {
                     String[] types = nameDatatype.split(" ");
-                    Print = tables[i] + ":" + types[0] + ":" + types[1];
+                    Print = "<" + tables[i] + ">  :   " + "<" + types[0] + ">,<" + types[1] + ">";
                     ar.add(Print);
 
                 }
@@ -50,18 +50,26 @@ public class MetaDataGenerator {
                 System.err.println("Error: " + e.getMessage());
             }
         }
+
         try {
-            File file = new File(System.getProperty("user.dir") + "/assets/metadata/" + databaseName + "_metadata.txt");
-            file.createNewFile();
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write("Table Name:Name:Datatype \n");
+            File file = new File("./assets/DataDictionary/DataDictionary.txt");
+            file.getParentFile().mkdirs();
+            FileWriter fr = new FileWriter(file, true);
+            BufferedWriter br = new BufferedWriter(fr);
+            PrintWriter pr = new PrintWriter(br);
+            br.write("<database>  :  " + databaseName + "\n" + "Tables" + "\n");
+            br.write("<Table Name>  :  <Name>,<Datatype>\n");
+
             for (String var : ar) {
-                fileWriter.write(var + "\n");
+                br.write(var);
+                br.newLine();
+
             }
-            fileWriter.close();
+            pr.close();
+            br.close();
+            fr.close();
 
         } catch (Exception e) {
-            System.out.println("Exception occured: "+ e.toString());
 
         }
 

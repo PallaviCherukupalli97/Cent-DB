@@ -2,6 +2,7 @@ package QueryParser;
 
 import Operations.*;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,10 +11,11 @@ import Preferences.*;
 
 public class Parser {
     List<String> column_titles;
-    public String takeInput() {
+    public String takeInput() throws IOException {
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
         String query = new String();
+
         while (sc.hasNextLine()) {
             String input = sc.nextLine();
             if (input.toLowerCase().startsWith("begin") || query.toLowerCase().startsWith("begin")) {
@@ -34,6 +36,16 @@ public class Parser {
                 }
             }
         }
+
+        File file = new File("./assets/recordInputs/Inputs.txt");
+        file.getParentFile().mkdirs();
+        FileWriter fr = new FileWriter(file, true);
+        BufferedWriter br = new BufferedWriter(fr);
+        PrintWriter pr = new PrintWriter(br);
+        pr.println(query);
+        pr.close();
+        br.close();
+        fr.close();
         return query;
     }
 
