@@ -17,3 +17,12 @@ select * from test1;
 insert into test1 (name,age,subject) values (prit,23,adv);
 select * from test1;
 select * from test1 where name=prit;
+begin transaction
+use test;
+select * from test1;
+commit;
+use test;
+begin transaction
+select * from test1;
+select * from test1 where name=prit;
+commit;

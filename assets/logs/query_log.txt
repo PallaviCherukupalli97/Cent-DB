@@ -19,3 +19,12 @@
 06-12-2021 19:37:29 : insert into test1 (name,age,subject) values (prit,23,adv);
 06-12-2021 19:37:33 : select * from test1;
 06-12-2021 19:37:53 : select * from test1 where name=prit;
+06-12-2021 20:30:48 : begin transaction
+use test;
+select * from test1;
+commit;
+06-12-2021 20:30:59 : use test;
+06-12-2021 20:31:26 : begin transaction
+select * from test1;
+select * from test1 where name=prit;
+commit;
