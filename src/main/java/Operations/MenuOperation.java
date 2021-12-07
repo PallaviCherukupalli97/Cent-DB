@@ -27,7 +27,8 @@ public class MenuOperation {
                     if(query.toLowerCase().startsWith("begin"))
                     {
                         transactions.copyDatabase(sourceDirectory, targetDirectory);
-                        transactions.changeGlobalDb();
+                        DatabaseSetting.TRANSACTION_DATABASE = DatabaseSetting.SELECTED_DATABASE;
+                        transactions.changeGlobalDb("transactionDatabase");
                         //take input
                         while(true){
                             if(query.toLowerCase().startsWith("commit") || query.toLowerCase().startsWith("rollback")) {
@@ -39,6 +40,8 @@ public class MenuOperation {
                                 }else{
                                     System.out.println("Transaction rollback successfully");
                                 }
+                                DatabaseSetting.SELECTED_DATABASE = DatabaseSetting.TRANSACTION_DATABASE;
+                                DatabaseSetting.TRANSACTION_DATABASE = null;
                                 break;
                             }
                             query = parser.takeInput();
@@ -47,7 +50,7 @@ public class MenuOperation {
                             }
                         }
                        //delete trans db
-                        transactions.deleteTransactionDatabase();
+                        transactions.deleteTransactionDatabase(targetDirectory);
                     }
                     else
                     {
