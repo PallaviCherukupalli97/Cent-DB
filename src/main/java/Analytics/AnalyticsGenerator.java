@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 public class AnalyticsGenerator {
 
-    public static void countTotalQueries() throws IOException {
+    public void countTotalQueries() throws IOException {
         String strLine;
         int lines = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader("./assets/recordInputs/Inputs.txt"))) {
@@ -27,7 +27,7 @@ public class AnalyticsGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String write1 = "Total number of queries (valid + invalid)  :  " + lines;
+        String write1 = "Total number of queries (valid + invalid): " + lines;
         System.out.println(write1);
         File file = new File("./assets/analytics/analytics.txt");
         file.getParentFile().mkdirs();
@@ -41,14 +41,14 @@ public class AnalyticsGenerator {
 
     }
 
-    public static void numberOfDatabases() throws IOException {
+    public void numberOfDatabases() throws IOException {
         long count = 0;
         try (Stream<Path> files = Files.list(Paths.get("./assets/database/"))) {
             count = files.count() - 1;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String write2 = "Number of Databases  :  " + count;
+        String write2 = "Number of Databases:  " + count;
         System.out.println(write2);
         File file = new File("./assets/analytics/analytics.txt");
         FileWriter fr = new FileWriter(file, true);
@@ -60,7 +60,7 @@ public class AnalyticsGenerator {
         fr.close();
     }
 
-    public static void numberOfTables() throws IOException {
+    public void numberOfTables() throws IOException {
 
         File folder = new File("./assets/database/");
         File[] listOfFiles = folder.listFiles();
@@ -74,7 +74,7 @@ public class AnalyticsGenerator {
                 countTables = listOfTables.length + countTables;
             }
         }
-        String write3 = "Number of Tables  :  " + countTables;
+        String write3 = "Number of Tables: " + countTables;
         System.out.println(write3);
         File file = new File("./assets/analytics/analytics.txt");
         FileWriter fr = new FileWriter(file, true);
@@ -87,7 +87,7 @@ public class AnalyticsGenerator {
 
     }
 
-    public static void numberOfTablesInEachDatabase() throws IOException {
+    public void numberOfTablesInEachDatabase() throws IOException {
 
         File folder = new File("./assets/database/");
         File[] listOfFiles = folder.listFiles();
@@ -97,7 +97,7 @@ public class AnalyticsGenerator {
                 String databaseName = listOfFiles[i].getName();
                 File database = new File("./assets/database/" + databaseName + "/");
                 File[] listOfTables = database.listFiles();
-                String write4 = "Number of Tables in " + databaseName + "  :  " + listOfTables.length;
+                String write4 = "Number of Tables in " + databaseName + ": " + listOfTables.length;
                 System.out.println(write4);
                 File file = new File("./assets/analytics/analytics.txt");
                 FileWriter fr = new FileWriter(file, true);
@@ -113,7 +113,7 @@ public class AnalyticsGenerator {
     }
 
 
-    public static void numberOfValidQueries() throws IOException {
+    public void numberOfValidQueries() throws IOException {
         String fileLine;
         int createDatabaseCount = 0;
         int createTableCount = 0;
@@ -170,13 +170,13 @@ public class AnalyticsGenerator {
                     continue;
                 }
             }
-            String write5 = "Total number of valid Create Database Queries  :   " + createDatabaseCount + "\n" +
-                    "Total number of valid Create Table Queries   :   " + createTableCount  + "\n" +
-                    "Total number of valid Drop Database Queries   :   " + dropDatabaseCount + "\n" +
-                    "Total number of valid Drop Table Queries   :   " + dropTableCount + "\n" +
-                    "Total number of valid Update Table Queries   :   " + updateTableCount + "\n" +
-                    "Total number of valid Insert Table Queries   :   " + insertTableCount + "\n" +
-                    "Total number of valid Delete Table Queries   :   " + deleteTableCount;
+            String write5 = "Total number of valid Create Database Queries: " + createDatabaseCount + "\n" +
+                    "Total number of valid Create Table Queries: " + createTableCount  + "\n" +
+                    "Total number of valid Drop Database Queries: " + dropDatabaseCount + "\n" +
+                    "Total number of valid Drop Table Queries: " + dropTableCount + "\n" +
+                    "Total number of valid Update Table Queries: " + updateTableCount + "\n" +
+                    "Total number of valid Insert Table Queries: " + insertTableCount + "\n" +
+                    "Total number of valid Delete Table Queries: " + deleteTableCount;
             Set<String> unique = new HashSet<String>(list);
             for (String key : unique) {
                 write6 = "Total " + Collections.frequency(list, key) + " Update operations performed on " + key + " table";
