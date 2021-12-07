@@ -3,13 +3,13 @@ package MetaData;
 import java.io.*;
 import java.util.*;
 
-public class MetaDataGeneratorClass {
+public class MetaDataGenerator {
 
     public String takeInput() {
         System.out.println("Enter the name of the database you want metadata for: ");
         Scanner sc = new Scanner(System.in);
-        String temp = sc.nextLine();
-        return temp;
+        String databaseName = sc.nextLine();
+        return databaseName;
     }
 
     public boolean validateDatabase(String databaseName) throws FileNotFoundException {
@@ -23,7 +23,7 @@ public class MetaDataGeneratorClass {
         return false;
     }
 
-    public void MetaDataGenerator(String databaseName) throws IOException {
+    public void generateMetaData(String databaseName) throws IOException {
         String tableLocation = "./assets/database/" + databaseName + "/";
         File Tables = new File(tableLocation);
         String tables[] = Tables.list();
@@ -50,17 +50,18 @@ public class MetaDataGeneratorClass {
                 System.err.println("Error: " + e.getMessage());
             }
         }
-        BufferedWriter wr = null;
         try {
-            wr = new BufferedWriter(new FileWriter("MetaData.txt"));
-            wr.write("Table Name:Name:Datatype \n");
+            File file = new File(System.getProperty("user.dir") + "/assets/metadata/" + databaseName + "_metadata.txt");
+            file.createNewFile();
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write("Table Name:Name:Datatype \n");
             for (String var : ar) {
-                wr.write(var);
-                wr.newLine();
+                fileWriter.write(var + "\n");
             }
-            wr.close();
+            fileWriter.close();
 
         } catch (Exception e) {
+            System.out.println("Exception occured: "+ e.toString());
 
         }
 

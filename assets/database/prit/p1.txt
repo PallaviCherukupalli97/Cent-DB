@@ -1,2 +1,0 @@
-name varchar: age int:
-23:Jay:

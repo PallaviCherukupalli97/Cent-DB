@@ -7,3 +7,15 @@
 06-12-2021 01:52:59 : create table p1 (name varchar, age int);
 06-12-2021 01:53:44 : insert into p1 (name,age) values (Prit,23);
 06-12-2021 01:54:09 : update p1 set name=Jay where age=23;
+06-12-2021 19:34:28 : create database test;
+06-12-2021 19:34:45 : drop database prot;
+06-12-2021 19:34:52 : drop database prit;
+06-12-2021 19:35:07 : use test;
+06-12-2021 19:35:47 : create table test1 (name varchar, age int, subject varchar);
+06-12-2021 19:35:59 : select * from test1;
+06-12-2021 19:36:22 : insert into test1 (name,age,subject) values (jay,23,data);
+06-12-2021 19:36:56 : select * from test;
+06-12-2021 19:37:07 : select * from test1;
+06-12-2021 19:37:29 : insert into test1 (name,age,subject) values (prit,23,adv);
+06-12-2021 19:37:33 : select * from test1;
+06-12-2021 19:37:53 : select * from test1 where name=prit;

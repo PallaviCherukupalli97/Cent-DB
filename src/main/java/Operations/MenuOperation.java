@@ -1,10 +1,11 @@
 package Operations;
 
-import MetaData.MetaDataGeneratorClass;
+import Dump.DumpManager;
+import LogManagement.LogManager;
+import MetaData.MetaDataGenerator;
 import QueryParser.Parser;
 import UserInterface.Menu;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class MenuOperation {
@@ -25,17 +26,17 @@ public class MenuOperation {
                     break;
 
                 case "2":
-                    MetaDataGeneratorClass metaDataGeneratorclass = new MetaDataGeneratorClass();
-                    String temp1 = metaDataGeneratorclass.takeInput();
-                    if(metaDataGeneratorclass.validateDatabase(temp1)) {
-                        metaDataGeneratorclass.MetaDataGenerator(temp1);
+                    MetaDataGenerator metaDataGenerator = new MetaDataGenerator();
+                    String databaseName = metaDataGenerator.takeInput();
+                    try {
+                        if(metaDataGenerator.validateDatabase(databaseName)) {
+                            metaDataGenerator.generateMetaData(databaseName);
+                        }else{
+                            System.out.println("Database '" + databaseName + "' not found. Please try again.");
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-
-//
-//                    String databaseName = metaDataGeneratorclass.takeInput();
-//                    if(metaDataGeneratorclass.validateDatabase(databaseName)){
-//                        metaDataGeneratorclass.MetaDataGenerator(databaseName);
-
 
 //                Export
                     break;
