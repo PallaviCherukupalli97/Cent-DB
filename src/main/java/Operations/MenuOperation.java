@@ -15,14 +15,15 @@ import Transactions.Transactions;
 import java.io.IOException;
 
 public class MenuOperation {
-
+	LogManager log = new LogManager();
     public void performTask() throws IOException {
         String choice = "";
+        
         while (true) {
             choice = Menu.operationMenu();
             switch (choice) {
                 case "1":
-                    Parser parser = new Parser();
+                	Parser parser = new Parser();
                     String query = parser.takeInput();
                     Transactions transactions = new Transactions();
                     File sourceDirectory = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE);
@@ -37,9 +38,13 @@ public class MenuOperation {
                                 if (query.toLowerCase().startsWith("commit")) {
                                     // replace original db with transactiondb
                                     transactions.copyDatabase(targetDirectory, sourceDirectory);
-                                    System.out.println("Transaction committed successfully");
+                                    String successMsg = "Transaction committed successfully";
+                                    System.out.println(successMsg);
+                                    log.transactionMsg(successMsg);
                                 } else {
-                                    System.out.println("Transaction rollback successfully");
+                                	String rollbackMsg = "Transaction rollback successfully";
+                                    System.out.println(rollbackMsg);
+                                    log.transactionMsg(rollbackMsg);
                                 }
                                 DatabaseSetting.SELECTED_DATABASE = DatabaseSetting.TRANSACTION_DATABASE;
                                 DatabaseSetting.TRANSACTION_DATABASE = null;
@@ -53,17 +58,24 @@ public class MenuOperation {
                         //delete trans db
                         transactions.deleteTransactionDatabase(targetDirectory);
                     } else {
-                        LogManager.queryLog(query);
-                        DumpManager.exportDump(query);
+                        
+                        
                         if (parser.validQuery(query)) {
+                        	long startTime = System.nanoTime();
+                        	long stopTime = System.nanoTime();
+                        	long timer= stopTime - startTime;
+                        	LogManager.queryLog(query);
+                        	DumpManager.dump(query);
+                        	LogManager.generalLog(timer);
                             parser.executeQuery(query);
+                           
                         }
                     }
                     break;
 
                 case "2":
-
-
+                	DumpManager dump= new DumpManager();
+                	dump.exportDump();
 //                Export
                     break;
 
