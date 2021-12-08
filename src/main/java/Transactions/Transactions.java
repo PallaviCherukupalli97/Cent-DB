@@ -3,9 +3,12 @@ package Transactions;
 import Preferences.DatabaseSetting;
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
+import LogManagement.LogManager;
 
+import java.io.File;
+	
 public class Transactions {
+	LogManager logmanager = new LogManager();
     public static void copyDatabase(File sourceFile, File targetFile){
         try
         {
@@ -17,6 +20,7 @@ public class Transactions {
     }
     public void changeGlobalDb(String database){
         DatabaseSetting.SELECTED_DATABASE = database;
+        logmanager.eventLog(database);
     }
     public void deleteTransactionDatabase(File directory){
         try {

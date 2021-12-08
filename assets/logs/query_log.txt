@@ -48,3 +48,15 @@ commit;
 07-12-2021 21:02:33 : use prit;
 07-12-2021 21:02:48 : create table p2 (name abc,asd int);
 07-12-2021 21:04:17 : use prit;
+08-12-2021 20:44:28 : use test;
+08-12-2021 20:47:00 : use test;
+08-12-2021 20:47:33 : insert
+08-12-2021 20:49:30 : create table person (name varchar, age int);
+08-12-2021 20:50:03 : select * from person
+08-12-2021 20:50:26 : select * from person;
+08-12-2021 20:50:56 : commit
+08-12-2021 20:54:21 : rollback
+08-12-2021 20:54:31 : rollback;
+08-12-2021 20:55:03 : test1;
+08-12-2021 21:57:50 : use test;
+08-12-2021 22:00:00 : use prit;

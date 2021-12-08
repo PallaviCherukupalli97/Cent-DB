@@ -1,5 +1,9 @@
 Database name: test
 
+Table name: person
+Column name: name	|Column type: varchar
+Column name: age	|Column type: int
+
 Table name: test1
 Column name: name	|Column type: varchar
 Column name: age	|Column type: int
