@@ -1,0 +1,5 @@
+Database name: prit
+
+Table name: p1
+Column name: name	|Column type: varchar
+Column name: age	|Column type: int

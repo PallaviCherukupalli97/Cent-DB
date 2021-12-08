@@ -2,6 +2,7 @@ package Operations;
 
 import java.io.File;
 
+import DataModel.DataModel;
 import Dump.DumpManager;
 import LogManagement.LogManager;
 import Preferences.DatabaseSetting;
@@ -67,7 +68,8 @@ public class MenuOperation {
                     break;
 
                 case "3":
-                    System.out.println("Implement data model feature here");
+                    DataModel dataModel = new DataModel();
+                    dataModel.exportDataModel();
 //                Data Model
                     break;
 

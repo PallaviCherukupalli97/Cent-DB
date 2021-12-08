@@ -40,3 +40,6 @@ insert into table3 (animal,legs) values (cat,4);
 update table3 set legs=5 where animal=cat;
 use test;
 asd
+adsfg
+sd
+use prit;
