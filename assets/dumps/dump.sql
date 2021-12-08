@@ -43,3 +43,6 @@ asd
 adsfg
 sd
 use prit;
+use prit;
+create table p2 (name abc,asd int);
+use prit;

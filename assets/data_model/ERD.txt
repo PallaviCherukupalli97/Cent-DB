@@ -3,6 +3,10 @@ Database name: prit
 Table name: p1
 Column name: name	|Column type: varchar
 Column name: age	|Column type: int
+
+Table name: p2
+Column name: name	|Column type: abc
+Column name: asd	|Column type: int
 -----------------------------------------------------
 Database name: test
 
