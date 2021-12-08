@@ -14,16 +14,12 @@ public class CentDB {
             choice = Menu.mainMenu();
             switch (choice) {
                 case 1 : {
-//                    System.out.println("Call Registration code");
-                    Registration.registerUser();
                     //Register new user
+                    Registration.registerUser();
                 }
                 case 2 : {
-
-
-//                    System.out.println("Call Login code");
-                    Login.loginUser();
                     // Login User
+                    Login.loginUser();
                 }
 
                 case 0 : {

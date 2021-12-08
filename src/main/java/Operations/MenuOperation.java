@@ -46,7 +46,7 @@ public class MenuOperation {
                                 break;
                             }
                             query = parser.takeInput();
-                            if (!query.toLowerCase().startsWith("commit")) {
+                            if (!query.toLowerCase().startsWith("commit") && !query.toLowerCase().startsWith("rollback")) {
                                 parser.executeQuery(query);
                             }
                         }
