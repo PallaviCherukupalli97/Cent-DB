@@ -1,0 +1,12 @@
+Database contains 2	tables at: 08-12-2021 20:44:28
+Query execution time :	100
+Database contains 2	tables at: 08-12-2021 20:47:00
+Query execution time :	200
+Database contains 2	tables at: 08-12-2021 20:54:31
+Query execution time :	200
+Database contains 2	tables at: 08-12-2021 20:55:03
+Query execution time :	100
+Database contains 2	tables at: 08-12-2021 21:57:50
+Query execution time :	200
+Database contains 2	tables at: 08-12-2021 22:00:00
+Query execution time :	200

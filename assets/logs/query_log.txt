@@ -1,0 +1,62 @@
+06-12-2021 00:39:47 : create database test3;
+06-12-2021 00:39:47 : drop database test2;
+06-12-2021 00:51:21 : create database test4;
+06-12-2021 01:52:17 : create database prit;
+06-12-2021 01:52:29 : select * from prit;
+06-12-2021 01:52:33 : use prit;
+06-12-2021 01:52:59 : create table p1 (name varchar, age int);
+06-12-2021 01:53:44 : insert into p1 (name,age) values (Prit,23);
+06-12-2021 01:54:09 : update p1 set name=Jay where age=23;
+06-12-2021 19:34:28 : create database test;
+06-12-2021 19:34:45 : drop database prot;
+06-12-2021 19:34:52 : drop database prit;
+06-12-2021 19:35:07 : use test;
+06-12-2021 19:35:47 : create table test1 (name varchar, age int, subject varchar);
+06-12-2021 19:35:59 : select * from test1;
+06-12-2021 19:36:22 : insert into test1 (name,age,subject) values (jay,23,data);
+06-12-2021 19:36:56 : select * from test;
+06-12-2021 19:37:07 : select * from test1;
+06-12-2021 19:37:29 : insert into test1 (name,age,subject) values (prit,23,adv);
+06-12-2021 19:37:33 : select * from test1;
+06-12-2021 19:37:53 : select * from test1 where name=prit;
+06-12-2021 20:30:48 : begin transaction
+use test;
+select * from test1;
+commit;
+06-12-2021 20:30:59 : use test;
+06-12-2021 20:31:26 : begin transaction
+select * from test1;
+select * from test1 where name=prit;
+commit;
+07-12-2021 10:34:59 : use database1;
+07-12-2021 10:35:57 : insert into table3 (animal,legs) values (bird,2);
+07-12-2021 10:36:57 : update table3 set legs=12 where animal=octopus;
+07-12-2021 10:40:11 : create table table5;
+07-12-2021 10:40:25 : use database1;
+07-12-2021 10:40:39 : create table table5;
+07-12-2021 10:41:19 : insert into table3 (animal,legs) values (dog,4);
+07-12-2021 10:44:47 : use database1;
+07-12-2021 10:45:25 : use database1;
+07-12-2021 10:45:51 : String temp = sc.nextLine();
+07-12-2021 10:46:17 : insert into table3 (animal,legs) values (cat,4);
+07-12-2021 10:47:01 : update table3 set legs=5 where animal=cat;
+07-12-2021 20:17:53 : use test;
+07-12-2021 20:17:57 : asd
+07-12-2021 20:30:28 : adsfg
+07-12-2021 20:36:47 : sd
+07-12-2021 21:00:46 : use prit;
+07-12-2021 21:02:33 : use prit;
+07-12-2021 21:02:48 : create table p2 (name abc,asd int);
+07-12-2021 21:04:17 : use prit;
+08-12-2021 20:44:28 : use test;
+08-12-2021 20:47:00 : use test;
+08-12-2021 20:47:33 : insert
+08-12-2021 20:49:30 : create table person (name varchar, age int);
+08-12-2021 20:50:03 : select * from person
+08-12-2021 20:50:26 : select * from person;
+08-12-2021 20:50:56 : commit
+08-12-2021 20:54:21 : rollback
+08-12-2021 20:54:31 : rollback;
+08-12-2021 20:55:03 : test1;
+08-12-2021 21:57:50 : use test;
+08-12-2021 22:00:00 : use prit;

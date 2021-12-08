@@ -1,0 +1,4 @@
+Table Name:Name:Datatype 
+test1.txt:name:varchar
+test1.txt::age
+test1.txt::subject
