@@ -38,3 +38,5 @@ use database1;
 String temp = sc.nextLine();
 insert into table3 (animal,legs) values (cat,4);
 update table3 set legs=5 where animal=cat;
+use test;
+asd

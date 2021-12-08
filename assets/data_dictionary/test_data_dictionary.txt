@@ -1,0 +1,6 @@
+Database name: test
+
+Table name: test1
+Column name: name	|Column type: varchar
+Column name: age	|Column type: int
+Column name: subject	|Column type: varchar

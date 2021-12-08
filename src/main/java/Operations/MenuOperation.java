@@ -1,6 +1,7 @@
 package Operations;
 
 import java.io.File;
+
 import Dump.DumpManager;
 import LogManagement.LogManager;
 import Preferences.DatabaseSetting;
@@ -25,20 +26,18 @@ public class MenuOperation {
                     Transactions transactions = new Transactions();
                     File sourceDirectory = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE);
                     File targetDirectory = new File(System.getProperty("user.dir") + "/assets/database/transactionDatabase");
-                    if(query.toLowerCase().startsWith("begin"))
-                    {
+                    if (query.toLowerCase().startsWith("begin")) {
                         transactions.copyDatabase(sourceDirectory, targetDirectory);
                         DatabaseSetting.TRANSACTION_DATABASE = DatabaseSetting.SELECTED_DATABASE;
                         transactions.changeGlobalDb("transactionDatabase");
                         //take input
-                        while(true){
-                            if(query.toLowerCase().startsWith("commit") || query.toLowerCase().startsWith("rollback")) {
-                                if(query.toLowerCase().startsWith("commit"))
-                                {
+                        while (true) {
+                            if (query.toLowerCase().startsWith("commit") || query.toLowerCase().startsWith("rollback")) {
+                                if (query.toLowerCase().startsWith("commit")) {
                                     // replace original db with transactiondb
                                     transactions.copyDatabase(targetDirectory, sourceDirectory);
                                     System.out.println("Transaction committed successfully");
-                                }else{
+                                } else {
                                     System.out.println("Transaction rollback successfully");
                                 }
                                 DatabaseSetting.SELECTED_DATABASE = DatabaseSetting.TRANSACTION_DATABASE;
@@ -46,15 +45,13 @@ public class MenuOperation {
                                 break;
                             }
                             query = parser.takeInput();
-                            if(!query.toLowerCase().startsWith("commit")) {
+                            if (!query.toLowerCase().startsWith("commit")) {
                                 parser.executeQuery(query);
                             }
                         }
-                       //delete trans db
+                        //delete trans db
                         transactions.deleteTransactionDatabase(targetDirectory);
-                    }
-                    else
-                    {
+                    } else {
                         LogManager.queryLog(query);
                         DumpManager.exportDump(query);
                         if (parser.validQuery(query)) {
@@ -88,10 +85,15 @@ public class MenuOperation {
                     DataDictionary dataDictionary = new DataDictionary();
                     String databaseName = dataDictionary.takeInput();
                     try {
-                        if(dataDictionary.validateDatabase(databaseName)) {
-                            dataDictionary.generateDataDictionary(databaseName);
-                        }else{
-                            System.out.println("Database '" + databaseName + "' not found. Please try again.");
+                        if(DatabaseSetting.SELECTED_DATABASE != null){
+                            if(dataDictionary.validateDatabase(databaseName)) {
+                                dataDictionary.generateDataDictionary(databaseName);
+                            }else{
+                                System.out.println("Database '" + databaseName + "' not found. Please try again.");
+                            }
+
+                        }else {
+                            System.out.println("No database selected");
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

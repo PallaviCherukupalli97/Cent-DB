@@ -40,3 +40,5 @@ commit;
 07-12-2021 10:45:51 : String temp = sc.nextLine();
 07-12-2021 10:46:17 : insert into table3 (animal,legs) values (cat,4);
 07-12-2021 10:47:01 : update table3 set legs=5 where animal=cat;
+07-12-2021 20:17:53 : use test;
+07-12-2021 20:17:57 : asd

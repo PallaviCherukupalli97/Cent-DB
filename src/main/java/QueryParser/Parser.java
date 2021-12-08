@@ -2,14 +2,9 @@ package QueryParser;
 
 import Operations.*;
 
-<<<<<<< HEAD
-=======
 import java.io.*;
-import java.util.ArrayList;
->>>>>>> e7e02ae60e1c098efeca988d25b8c1b3a7e65941
 import java.util.List;
 import java.util.Scanner;
-import Preferences.*;
 
 public class Parser {
     List<String> column_titles;

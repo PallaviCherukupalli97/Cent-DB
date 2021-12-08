@@ -1,7 +1,11 @@
 package DataDictionary;
 
+
+import Preferences.DatabaseSetting;
+
 import java.io.*;
 import java.util.*;
+
 
 public class DataDictionary {
 
@@ -21,58 +25,47 @@ public class DataDictionary {
             }
         }
         return false;
+
+
     }
 
     public void generateDataDictionary(String databaseName) throws IOException {
-        String tableLocation = "./assets/database/" + databaseName + "/";
-        File Tables = new File(tableLocation);
-        String tables[] = Tables.list();
-        String Print = null;
-        ArrayList<String> ar = new ArrayList<String>();
-        for (int i = 0; i < tables.length; i++) {
-            String tableName = tables[i];
-            String tableDataLocation = "./assets/database/" + databaseName + "/" + tableName;
-            try {
-                FileInputStream fstream = new FileInputStream(tableDataLocation);
-                DataInputStream in = new DataInputStream(fstream);
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                String strLine;
-                strLine = br.readLine();
-                String[] splitter = strLine.split(":");
-                for (String nameDatatype : splitter) {
-                    String[] types = nameDatatype.split(" ");
-                    Print = "<" + tables[i] + ">  :   " + "<" + types[0] + ">,<" + types[1] + ">";
-                    ar.add(Print);
+        File dataDictionary = new File(System.getProperty("user.dir") + "/assets/data_dictionary/" + databaseName + "_data_dictionary.txt");
+        dataDictionary.createNewFile();
 
-                }
-                in.close();
-            } catch (Exception e) {// Catch exception if any
-                System.err.println("Error: " + e.getMessage());
+        File tables = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/");
+        List<String> list_of_tables = List.of(tables.list());
+
+        FileWriter fileWriter = new FileWriter(dataDictionary);
+        fileWriter.write("Database name: " + databaseName);
+
+        for (String table : list_of_tables) {
+
+            fileWriter.write("\n\nTable name: " + table.substring(0,table.length()-4));
+
+            String firstLine = readFirstLineOfTable(table);
+            for(String column: firstLine.trim().split(":")){
+                fileWriter.write("\nColumn name: " + column.trim().split(" ")[0]);
+                fileWriter.write("\t|Column type: " + column.trim().split(" ")[1]);
             }
         }
+        fileWriter.write("\n");
+        fileWriter.close();
 
-        try {
-            File file = new File("./assets/DataDictionary/DataDictionary.txt");
-            file.getParentFile().mkdirs();
-            FileWriter fr = new FileWriter(file, true);
-            BufferedWriter br = new BufferedWriter(fr);
-            PrintWriter pr = new PrintWriter(br);
-            br.write("<database>  :  " + databaseName + "\n" + "Tables" + "\n");
-            br.write("<Table Name>  :  <Name>,<Datatype>\n");
+    }
 
-            for (String var : ar) {
-                br.write(var);
-                br.newLine();
-
+    private String readFirstLineOfTable(String table) {
+        String firstLine = "";
+        try{
+            File file = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/" + table);
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            while ((firstLine = br.readLine()) != null) {
+                return firstLine;
             }
-            pr.close();
-            br.close();
-            fr.close();
-
-        } catch (Exception e) {
-
+        }catch (Exception e){
+            System.out.println("Exception occurred: " + e.toString());
         }
-
+        return firstLine;
     }
 }
 
