@@ -1,5 +1,7 @@
 package LogManagement;
 
+import Preferences.DatabaseSetting;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.time.LocalDateTime;
@@ -17,7 +19,7 @@ public class LogManager {
     public static void queryLog(String query) {
         try {
             FileWriter file = new FileWriter(System.getProperty("user.dir") + "/assets/logs/query_log.txt", true);
-            file.append(getCurrentTimeStamp() + " : " + query + "\n");
+            file.append(getCurrentTimeStamp() + " : " + DatabaseSetting.ACTIVE_USER + " : " + query + "\n");
             file.close();
         } catch (Exception e) {
             System.out.println("Exception occurred: " + e.toString());

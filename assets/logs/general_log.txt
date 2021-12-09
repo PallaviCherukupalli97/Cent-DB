@@ -10,3 +10,13 @@ Database contains 2	tables at: 08-12-2021 21:57:50
 Query execution time :	200
 Database contains 2	tables at: 08-12-2021 22:00:00
 Query execution time :	200
+Database contains 2	tables at: 09-12-2021 18:23:52
+Query execution time :	227
+Database contains 2	tables at: 09-12-2021 18:26:28
+Query execution time :	239
+Database contains 2	tables at: 09-12-2021 18:49:25
+Query execution time :	310
+Database contains 2	tables at: 09-12-2021 18:49:58
+Query execution time :	468
+Database contains 2	tables at: 09-12-2021 18:50:54
+Query execution time :	244

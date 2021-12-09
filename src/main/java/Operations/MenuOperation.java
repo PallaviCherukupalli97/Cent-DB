@@ -92,6 +92,7 @@ public class MenuOperation {
                     analyticsInfo.numberOfDatabases();
                     analyticsInfo.numberOfTables();
                     analyticsInfo.numberOfTablesInEachDatabase();
+                    analyticsInfo.numberOfUserOperations();
                     analyticsInfo.numberOfValidQueries();
 //                Analytics
                     break;

@@ -3,3 +3,4 @@ octopus:12:
 bird:2:
 dog:4:
 cat:5:
+camel:4:

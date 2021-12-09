@@ -28,8 +28,6 @@ public class Validator {
 
         }
         return column_values;
-//        String answer = input.substring(input.indexOf("(")+1, input.length()-1);
-//        return Arrays.stream(answer.split(",")).toList();
     }
 
     public static List<String> getColumnNames(String input) {
@@ -39,7 +37,6 @@ public class Validator {
             for(String s: matcher.group(1).split(",")){
                 column_name.add(s);
             }
-//            column_name.addAll(Collections.singleton(matcher.group(1).split(",")));
             break;
         }
         return column_name;

@@ -109,6 +109,31 @@ public class AnalyticsGenerator {
     }
 
 
+    public void numberOfUserOperations() throws IOException {
+        String query_logs_lines;
+        String user = null;
+        String useranalysis = null;
+        List<String> list = new ArrayList<String>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("./assets/logs/query_log.txt"))) {
+            while ((query_logs_lines = reader.readLine()) != null) {
+                user = query_logs_lines.split(" : ")[1];
+                list.add(user);
+                }
+            }
+        Set<String> unique = new HashSet<String>(list);
+        for (String key : unique) {
+            useranalysis = "User " + user + " submitted " + Collections.frequency(list, key) + " queries ";
+            System.out.println(useranalysis);
+        }File file = new File("./assets/analytics/analytics.txt");
+        FileWriter fr = new FileWriter(file, true);
+        BufferedWriter br = new BufferedWriter(fr);
+        PrintWriter pr = new PrintWriter(br);
+        pr.println(useranalysis);
+        pr.close();
+        br.close();
+        fr.close();
+    }
+
     public void numberOfValidQueries() throws IOException {
         String fileLines;
         int createDatabaseCount = 0;
@@ -124,7 +149,7 @@ public class AnalyticsGenerator {
         List<String> list1 = new ArrayList<String>();
         try (BufferedReader reader = new BufferedReader(new FileReader("./assets/logs/query_log.txt"))) {
             while ((fileLines = reader.readLine()) != null) {
-                String fileLine = fileLines.split(" : ")[1];
+                String fileLine = fileLines.split(" : ")[2];
                 if (fileLine.charAt(fileLine.length() - 1) == ';') {
                     String task = fileLine.split(" ")[0];
                     if (task.equalsIgnoreCase("CREATE")) {

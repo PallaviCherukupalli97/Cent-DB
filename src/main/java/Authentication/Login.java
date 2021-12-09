@@ -1,6 +1,7 @@
 package Authentication;
 
 import Operations.*;
+import Preferences.DatabaseSetting;
 
 import java.io.*;
 import java.util.Scanner;
@@ -38,15 +39,7 @@ public class Login {
                             String answer = sc.nextLine();
                             if(answer.equals((val.split(" ; ")[3]).replace(" ",""))) {
                                 System.out.println("Access granted: User " + username + " logged in successfully.");
-                                File file = new File("./assets/recordInputs/Inputs.txt");
-                                file.getParentFile().mkdirs();
-                                FileWriter fr = new FileWriter(file, true);
-                                BufferedWriter br1 = new BufferedWriter(fr);
-                                PrintWriter pr = new PrintWriter(br1);
-                                pr.println(username + ":");
-                                pr.close();
-                                br.close();
-                                fr.close();
+                                DatabaseSetting.ACTIVE_USER = username;
                                 MenuOperation operation = new MenuOperation();
                                     operation.performTask();
 //                                }
