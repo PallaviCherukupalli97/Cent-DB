@@ -14,19 +14,15 @@ public class AnalyticsGenerator {
     public void countTotalQueries() throws IOException {
         String strLine;
         int lines = 0;
-        try (BufferedReader reader = new BufferedReader(new FileReader("./assets/recordInputs/Inputs.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("./assets/logs/query_log.txt"))) {
             while ((strLine = reader.readLine()) != null) {
-                String lastCharacter = strLine.substring(strLine.length() - 1);
-                if (lastCharacter.equals(":")) {
-                    continue;
-                } else {
+                String query = strLine.split(":")[3];
                     lines = lines + 1;
                 }
-
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         String write1 = "Total number of queries (valid + invalid): " + lines;
         System.out.println(write1);
         File file = new File("./assets/analytics/analytics.txt");
@@ -44,7 +40,7 @@ public class AnalyticsGenerator {
     public void numberOfDatabases() throws IOException {
         long count = 0;
         try (Stream<Path> files = Files.list(Paths.get("./assets/database/"))) {
-            count = files.count() - 1;
+            count = files.count();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,7 +110,7 @@ public class AnalyticsGenerator {
 
 
     public void numberOfValidQueries() throws IOException {
-        String fileLine;
+        String fileLines;
         int createDatabaseCount = 0;
         int createTableCount = 0;
         int dropDatabaseCount = 0;
@@ -126,8 +122,9 @@ public class AnalyticsGenerator {
         String write7 = null;
         List<String> list = new ArrayList<String>();
         List<String> list1 = new ArrayList<String>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("./assets/recordInputs/Inputs.txt"))) {
-            while ((fileLine = reader.readLine()) != null) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("./assets/logs/query_log.txt"))) {
+            while ((fileLines = reader.readLine()) != null) {
+                String fileLine = fileLines.split(" : ")[1];
                 if (fileLine.charAt(fileLine.length() - 1) == ';') {
                     String task = fileLine.split(" ")[0];
                     if (task.equalsIgnoreCase("CREATE")) {

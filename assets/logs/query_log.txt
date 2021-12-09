@@ -20,14 +20,8 @@
 06-12-2021 19:37:33 : select * from test1;
 06-12-2021 19:37:53 : select * from test1 where name=prit;
 06-12-2021 20:30:48 : begin transaction
-use test;
-select * from test1;
-commit;
 06-12-2021 20:30:59 : use test;
 06-12-2021 20:31:26 : begin transaction
-select * from test1;
-select * from test1 where name=prit;
-commit;
 07-12-2021 10:34:59 : use database1;
 07-12-2021 10:35:57 : insert into table3 (animal,legs) values (bird,2);
 07-12-2021 10:36:57 : update table3 set legs=12 where animal=octopus;

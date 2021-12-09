@@ -69,3 +69,93 @@ Total number of valid Insert Table Queries: 1
 Total number of valid Delete Table Queries: 0
 Total 1 Update operations performed on table3 table
 Total 1 Insert operations performed on table3 table
+Total number of queries (valid + invalid): 56
+Number of Databases:  2
+Number of Tables: 6
+Number of Tables in prit: 2
+Number of Tables in database1: 2
+Number of Tables in test: 2
+Total number of valid Create Database Queries: 0
+Total number of valid Create Table Queries: 0
+Total number of valid Drop Database Queries: 0
+Total number of valid Drop Table Queries: 0
+Total number of valid Update Table Queries: 1
+Total number of valid Insert Table Queries: 1
+Total number of valid Delete Table Queries: 0
+Total 1 Update operations performed on table3 table
+Total 1 Insert operations performed on table3 table
+Total number of queries (valid + invalid): 56
+Number of Databases:  3
+Number of Tables: 6
+Number of Tables in prit: 2
+Number of Tables in database1: 2
+Number of Tables in test: 2
+Total number of valid Create Database Queries: 0
+Total number of valid Create Table Queries: 0
+Total number of valid Drop Database Queries: 0
+Total number of valid Drop Table Queries: 0
+Total number of valid Update Table Queries: 0
+Total number of valid Insert Table Queries: 0
+Total number of valid Delete Table Queries: 0
+null
+null
+Total number of queries (valid + invalid): 56
+Number of Databases:  3
+Number of Tables: 6
+Number of Tables in prit: 2
+Number of Tables in database1: 2
+Number of Tables in test: 2
+Total number of valid Create Database Queries: 0
+Total number of valid Create Table Queries: 0
+Total number of valid Drop Database Queries: 0
+Total number of valid Drop Table Queries: 0
+Total number of valid Update Table Queries: 0
+Total number of valid Insert Table Queries: 0
+Total number of valid Delete Table Queries: 0
+null
+null
+Total number of queries (valid + invalid): 56
+Number of Databases:  2
+Number of Tables: 6
+Number of Tables in prit: 2
+Number of Tables in database1: 2
+Number of Tables in test: 2
+Total number of valid Create Database Queries: 0
+Total number of valid Create Table Queries: 0
+Total number of valid Drop Database Queries: 0
+Total number of valid Drop Table Queries: 0
+Total number of valid Update Table Queries: 0
+Total number of valid Insert Table Queries: 0
+Total number of valid Delete Table Queries: 0
+null
+null
+Total number of queries (valid + invalid): 56
+Number of Databases:  3
+Number of Tables: 6
+Number of Tables in prit: 2
+Number of Tables in database1: 2
+Number of Tables in test: 2
+Total number of valid Create Database Queries: 4
+Total number of valid Create Table Queries: 6
+Total number of valid Drop Database Queries: 3
+Total number of valid Drop Table Queries: 0
+Total number of valid Update Table Queries: 3
+Total number of valid Insert Table Queries: 0
+Total number of valid Delete Table Queries: 0
+Total 2 Update operations performed on table3 table
+null
+Total number of queries (valid + invalid): 56
+Number of Databases:  3
+Number of Tables: 6
+Number of Tables in prit: 2
+Number of Tables in database1: 2
+Number of Tables in test: 2
+Total number of valid Create Database Queries: 4
+Total number of valid Create Table Queries: 6
+Total number of valid Drop Database Queries: 3
+Total number of valid Drop Table Queries: 0
+Total number of valid Update Table Queries: 3
+Total number of valid Insert Table Queries: 6
+Total number of valid Delete Table Queries: 0
+Total 2 Update operations performed on table3 table
+Total 2 Insert operations performed on test1 table
