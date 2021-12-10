@@ -56,3 +56,103 @@ Database contains 6	tables with  12 records at:  10-12-2021 16:31:42
 Query execution time :	5178600
 Database contains 6	tables with  11 records at:  10-12-2021 16:31:53
 Query execution time :	5689500
+Database contains 6	tables with  11 records at:  10-12-2021 16:35:23
+Query execution time :	18933000
+Database contains 6	tables with  11 records at:  10-12-2021 16:36:09
+Query execution time :	5861500
+Database contains 6	tables with  14 records at:  10-12-2021 16:36:27
+Query execution time :	6145700
+Database contains 6	tables with  14 records at:  10-12-2021 16:37:02
+Query execution time :	21772700
+Database contains 6	tables with  14 records at:  10-12-2021 16:37:30
+Query execution time :	7594700
+Database contains 6	tables with  14 records at:  10-12-2021 16:52:26
+Query execution time :	19831100
+Database contains 6	tables with  14 records at:  10-12-2021 16:52:36
+Query execution time :	5748400
+Database contains 6	tables with  14 records at:  10-12-2021 16:52:56
+Query execution time :	7223200
+Database contains 6	tables with  14 records at:  10-12-2021 16:54:10
+Query execution time :	23004000
+Database contains 6	tables with  14 records at:  10-12-2021 16:54:26
+Query execution time :	7663200
+Database contains 6	tables with  14 records at:  10-12-2021 16:55:22
+Query execution time :	19863000
+Database contains 6	tables with  14 records at:  10-12-2021 16:55:37
+Query execution time :	7420900
+Database contains 6	tables with  14 records at:  10-12-2021 17:01:03
+Query execution time :	2650300
+Database contains 6	tables with  14 records at:  10-12-2021 17:01:19
+Query execution time :	11029200
+Database contains 6	tables with  14 records at:  10-12-2021 17:01:47
+Query execution time :	8052800
+Database contains 6	tables with  14 records at:  10-12-2021 17:02:06
+Query execution time :	1698400
+Database contains 6	tables with  14 records at:  10-12-2021 17:06:34
+Query execution time :	20685500
+Database contains 6	tables with  14 records at:  10-12-2021 17:06:48
+Query execution time :	3381800
+Database contains 6	tables with  14 records at:  10-12-2021 17:09:04
+Query execution time :	24123200
+Database contains 6	tables with  14 records at:  10-12-2021 17:09:18
+Query execution time :	1848300
+Database contains 6	tables with  14 records at:  10-12-2021 17:10:08
+Query execution time :	1703700
+Database contains 6	tables with  14 records at:  10-12-2021 17:10:14
+Query execution time :	12561800
+Database contains 6	tables with  14 records at:  10-12-2021 17:10:25
+Query execution time :	1612200
+Database contains 6	tables with  14 records at:  10-12-2021 17:13:08
+Query execution time :	14852500
+Database contains 6	tables with  14 records at:  10-12-2021 17:15:42
+Query execution time :	3661900
+Database contains 6	tables with  14 records at:  10-12-2021 17:15:58
+Query execution time :	3761400
+Database contains 6	tables with  14 records at:  10-12-2021 17:19:05
+Query execution time :	20184400
+Database contains 6	tables with  14 records at:  10-12-2021 17:19:24
+Query execution time :	3022000
+Database contains 6	tables with  14 records at:  10-12-2021 17:25:07
+Query execution time :	15302800
+Database contains 6	tables with  14 records at:  10-12-2021 17:27:20
+Query execution time :	21938000
+Database contains 6	tables with  14 records at:  10-12-2021 17:27:58
+Query execution time :	3735400
+Database contains 6	tables with  14 records at:  10-12-2021 17:28:07
+Query execution time :	1758200
+Database contains 6	tables with  14 records at:  10-12-2021 17:30:17
+Query execution time :	14384800
+Database contains 6	tables with  14 records at:  10-12-2021 17:33:34
+Query execution time :	22638000
+Database contains 6	tables with  14 records at:  10-12-2021 17:34:49
+Query execution time :	2159300
+Database contains 6	tables with  14 records at:  10-12-2021 17:37:19
+Query execution time :	20399100
+Database contains 6	tables with  14 records at:  10-12-2021 17:37:51
+Query execution time :	2115600
+Database contains 6	tables with  14 records at:  10-12-2021 17:40:48
+Query execution time :	20432100
+Database contains 6	tables with  14 records at:  10-12-2021 17:41:03
+Query execution time :	7081000
+Database contains 6	tables with  14 records at:  10-12-2021 17:41:39
+Query execution time :	5733200
+Database contains 6	tables with  14 records at:  10-12-2021 17:42:11
+Query execution time :	71100
+Database contains 6	tables with  14 records at:  10-12-2021 17:42:27
+Query execution time :	6653500
+Database contains 6	tables with  14 records at:  10-12-2021 17:42:36
+Query execution time :	4278100
+Database contains 6	tables with  14 records at:  10-12-2021 17:43:13
+Query execution time :	4619700
+Database contains 6	tables with  14 records at:  10-12-2021 17:43:37
+Query execution time :	5934600
+Database contains 6	tables with  14 records at:  10-12-2021 17:49:44
+Query execution time :	21446600
+Database contains 6	tables with  14 records at:  10-12-2021 17:50:10
+Query execution time :	7724500
+Database contains 6	tables with  14 records at:  10-12-2021 17:51:02
+Query execution time :	8157600
+Database contains 6	tables with  14 records at:  10-12-2021 17:51:33
+Query execution time :	4660300
+Database contains 6	tables with  14 records at:  10-12-2021 17:51:38
+Query execution time :	4740100

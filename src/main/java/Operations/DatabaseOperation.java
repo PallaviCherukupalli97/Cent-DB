@@ -197,42 +197,35 @@ public class DatabaseOperation {
             if(list_of_tables.contains(tableName + ".txt")){
                 String update_value = query.split(" ")[3].trim().split("=")[1];
                 String update_condition = query.split(" ")[5].trim().split("=")[1];
-
-//                System.out.println("Update value: " + update_value);
-//                System.out.println("Update condition: " + update_condition);
+                String source_column = query.split(" ")[3].trim().split("=")[0];
 
                 FileOperations io = new FileOperations();
                 List<List<String>> resultSet = io.readTable(tableName);
-//                System.out.println("ResultSet: \n" + resultSet);
+
+                int source_column_index = -1;
+                for(int i=0;i<resultSet.get(0).size();i++)
+                    if(resultSet.get(0).get(i).trim().split(" ")[0].equalsIgnoreCase(source_column))
+                        source_column_index = i;
 
                 int update_index = -1;
                 for(int i=0; i<resultSet.size();i++)
                     for(int j=0;j<resultSet.get(i).size();j++)
-                        if(resultSet.get(i).get(j).equalsIgnoreCase(update_condition))
+                        if(resultSet.get(i).get(j).equalsIgnoreCase(update_condition)){
                             update_index = i;
+                            break;
+                        }
 
-
-//                System.out.println(resultSet.get(update_index));
-                List<String> updated = new ArrayList<>();
-                updated.add(update_condition);
-                updated.add(update_value);
-
-                resultSet.set(update_index, updated);
-                System.out.println("ResultSet: \n" + resultSet);
+                resultSet.get(update_index).set(source_column_index,update_value);
+                resultSet.set(update_index,resultSet.get(update_index));
 
                 io.clearFile(tableName);
-                for(List<String> stt: resultSet)
-                    io.writeToTable(tableName, stt);
+                for(List<String> lines: resultSet)
+                    io.writeToTable(tableName, lines);
+                System.out.println("1 row updated");
 
             }else {
                 System.out.println("Table '" + tableName + "' does not exist. Please try again.");
             }
         }
-
-
-
-
-
-
     }
 }

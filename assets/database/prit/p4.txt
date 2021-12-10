@@ -1,3 +1,6 @@
 name text:id int:age int:contact int
-jay:23:34:23232323
-jay:23:34:23232323
+jay:21:34:23232323
+sheto:22:55:23232323
+kelo:23:34:23232323
+hashe:24:34:23232323
+lalu:25:34:23232323
