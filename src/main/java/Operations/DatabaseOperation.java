@@ -34,7 +34,7 @@ public class DatabaseOperation {
                 if (table.createNewFile()) {
                     System.out.println("Table created: " + tableName);
                     FileOperations io = new FileOperations();
-                    io.appendHashMap(tableName, column_titles);
+                    io.writeToTable(tableName, column_titles);
                 } else {
                     System.out.println("Table already exists.");
                 }
@@ -50,7 +50,7 @@ public class DatabaseOperation {
 
         if (list_of_tables.contains(tableName + ".txt")) {
             FileOperations io = new FileOperations();
-            io.appendHashMap(tableName, column_values);
+            io.writeToTable(tableName, column_values);
         } else {
             System.out.println("Table '" + tableName + "' does not exist in database '" + DatabaseSetting.SELECTED_DATABASE + "'.");
         }
@@ -165,7 +165,7 @@ public class DatabaseOperation {
 
             if(list_of_tables.contains(tableName + ".txt")){
                 String del_value = query.split(" ")[4].trim().split("=")[1];
-                System.out.println(del_value);
+//                System.out.println(del_value);
 
                 FileOperations io = new FileOperations();
                 List<List<String>> resultSet = io.readTable(tableName);
@@ -180,7 +180,7 @@ public class DatabaseOperation {
 
                 io.clearFile(tableName);
                 for(List<String> stt: resultSet)
-                    io.appendHashMap(tableName, stt);
+                    io.writeToTable(tableName, stt);
             }else {
                 System.out.println("Table '" + tableName + "' does not exist. Please try again.");
             }
@@ -198,8 +198,8 @@ public class DatabaseOperation {
                 String update_value = query.split(" ")[3].trim().split("=")[1];
                 String update_condition = query.split(" ")[5].trim().split("=")[1];
 
-                System.out.println("Update value: " + update_value);
-                System.out.println("Update condition: " + update_condition);
+//                System.out.println("Update value: " + update_value);
+//                System.out.println("Update condition: " + update_condition);
 
                 FileOperations io = new FileOperations();
                 List<List<String>> resultSet = io.readTable(tableName);
@@ -222,7 +222,7 @@ public class DatabaseOperation {
 
                 io.clearFile(tableName);
                 for(List<String> stt: resultSet)
-                    io.appendHashMap(tableName, stt);
+                    io.writeToTable(tableName, stt);
 
             }else {
                 System.out.println("Table '" + tableName + "' does not exist. Please try again.");

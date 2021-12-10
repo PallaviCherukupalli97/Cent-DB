@@ -1,0 +1,3 @@
+name text:id int:age int:contact int
+jay:23:34:23232323
+jay:23:34:23232323

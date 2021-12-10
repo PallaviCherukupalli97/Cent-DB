@@ -64,13 +64,14 @@ public class MenuOperation {
                         
                         if (parser.validQuery(query)) {
                         	long startTime = System.nanoTime();
-                        	long stopTime = System.nanoTime();
-                        	long timer= stopTime - startTime;
+                            parser.executeQuery(query);
+                            long stopTime = System.nanoTime();
+                        	long timer = stopTime - startTime;
+
                         	LogManager.queryLog(query);
                         	DumpManager.dump(query);
                         	LogManager.generalLog(timer);
-                            parser.executeQuery(query);
-                           
+
                         }
                     }
                     break;

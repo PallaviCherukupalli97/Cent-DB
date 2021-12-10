@@ -41,8 +41,13 @@ public class Parser {
 //                    call create table method
                 } else if (keyword.equalsIgnoreCase("table")) {
                     column_titles = Validator.getColumnNames(query);
-                    System.out.println(column_titles);
-                    databaseOperation.createTable(name, column_titles);
+//                    System.out.println(column_titles);
+                    if(Validator.validDataTypes(query)){
+                        databaseOperation.createTable(name, column_titles);
+                    }else{
+                        System.out.println("Invalid syntax. Please try again.");
+                    }
+
 
 //                    check if database is selected
 //                    call create database method

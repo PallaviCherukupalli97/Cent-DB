@@ -7,14 +7,17 @@ import java.util.*;
 
 public class FileOperations {
 
-    public void appendHashMap(String tableName, List<String> tableRow) {
+    public void writeToTable(String tableName, List<String> tableRow) {
         try {
             FileWriter fileWriter = new FileWriter(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/" + tableName + ".txt", true);
+            String temp = "";
             for(String data: tableRow){
-                fileWriter.write(data + ":");
+                temp += data + ":";
             }
+            fileWriter.write(temp.substring(0,temp.length()-1));
+
             fileWriter.write("\n");
-            System.out.println("1 row added to " + tableName);
+//            System.out.println("1 row added to " + tableName);
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();

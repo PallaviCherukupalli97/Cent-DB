@@ -30,3 +30,29 @@ Database contains 2	tables with  7 records at:  10-12-2021 17:43:17
 Query execution time :	225
 Database contains 2	tables with  7 records at:  10-12-2021 20:55:05
 Query execution time :	200
+Database contains 2	tables with  4 records at:  10-12-2021 16:23:43
+Query execution time :	3514500
+Database contains 3	tables with  5 records at:  10-12-2021 16:24:02
+Query execution time :	5050500
+Database contains 4	tables with  6 records at:  10-12-2021 16:25:09
+Query execution time :	14998000
+Database contains 5	tables with  7 records at:  10-12-2021 16:27:58
+Query execution time :	15572200
+Database contains 5	tables with  8 records at:  10-12-2021 16:28:36
+Query execution time :	2286200
+Database contains 5	tables with  8 records at:  10-12-2021 16:28:57
+Query execution time :	34392600
+Database contains 6	tables with  9 records at:  10-12-2021 16:30:02
+Query execution time :	17010400
+Database contains 6	tables with  10 records at:  10-12-2021 16:31:06
+Query execution time :	2498700
+Database contains 6	tables with  11 records at:  10-12-2021 16:31:09
+Query execution time :	1530200
+Database contains 6	tables with  11 records at:  10-12-2021 16:31:18
+Query execution time :	6342500
+Database contains 6	tables with  12 records at:  10-12-2021 16:31:30
+Query execution time :	927200
+Database contains 6	tables with  12 records at:  10-12-2021 16:31:42
+Query execution time :	5178600
+Database contains 6	tables with  11 records at:  10-12-2021 16:31:53
+Query execution time :	5689500

@@ -1,5 +1,7 @@
 package Operations;
 
+import Preferences.DatabaseSetting;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,7 +37,7 @@ public class Validator {
         Matcher matcher = Pattern.compile("\\((.*?)\\)").matcher(input);
         while (matcher.find()) {
             for(String s: matcher.group(1).split(",")){
-                column_name.add(s);
+                column_name.add(s.trim());
             }
             break;
         }
@@ -85,6 +87,21 @@ public class Validator {
         {
             return false;
         }
+    }
+
+    public static boolean validDataTypes(String query) {
+        List<String> dataTyes = Validator.getColumnNames(query);
+
+        for(String dataType: dataTyes){
+            String token = dataType.split(" ")[1];
+//            System.out.println("Data: " + token);
+            if(!DatabaseSetting.DATA_TYPES.contains(token)){
+                return false;
+            }else {
+                continue;
+            }
+        }
+        return true;
     }
 }
 

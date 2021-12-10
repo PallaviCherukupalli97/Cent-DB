@@ -36,7 +36,7 @@ public class LogManager {
     public static void generalLog(long timer) {
         try {
             FileWriter fileWriter = new FileWriter(System.getProperty("user.dir") + "/assets/logs/general_log.txt", true);
-            String dirPath=System.getProperty("user.dir")+"/assets/database/database1";
+            String dirPath=System.getProperty("user.dir")+"/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/";
             File file= new File(dirPath);
             int fileCounter=0;
             String str[] = file.list();
@@ -47,7 +47,7 @@ public class LogManager {
         		if(fls.isFile()){
         			fileCounter++;
         			
-        			File table = new File(System.getProperty("user.dir") + "/assets/database/database1/" + fls.getName());
+        			File table = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/" + fls.getName());
                     BufferedReader br = new BufferedReader(new FileReader(table));                                      
         			while( br.readLine() != null) {                    	
                     linecounter++;                       

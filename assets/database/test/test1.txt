@@ -1,3 +1,0 @@
-name varchar: age int: subject varchar:
-jay:23:data:
-prit:23:adv:
