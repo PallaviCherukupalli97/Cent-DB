@@ -119,6 +119,7 @@ public class MenuOperation {
                         if(DatabaseSetting.SELECTED_DATABASE != null){
                             if(dataDictionary.validateDatabase(databaseName)) {
                                 dataDictionary.generateDataDictionary(databaseName);
+                                System.out.println("Database '" + databaseName + "' data dictionary generated.");
                             }else{
                                 System.out.println("Database '" + databaseName + "' not found. Please try again.");
                             }
