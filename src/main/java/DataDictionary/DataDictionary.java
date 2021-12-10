@@ -25,8 +25,6 @@ public class DataDictionary {
             }
         }
         return false;
-
-
     }
 
     public void generateDataDictionary(String databaseName) throws IOException {
@@ -34,12 +32,12 @@ public class DataDictionary {
         dataDictionary.createNewFile();
 
         File tables = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/");
-        List<String> list_of_tables = List.of(tables.list());
+        List<String> listOfTables = List.of(tables.list());
 
         FileWriter fileWriter = new FileWriter(dataDictionary);
         fileWriter.write("Database name: " + databaseName);
 
-        for (String table : list_of_tables) {
+        for (String table : listOfTables) {
 
             fileWriter.write("\n\nTable name: " + table.substring(0,table.length()-4));
 

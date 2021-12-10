@@ -110,25 +110,25 @@ public class AnalyticsGenerator {
 
 
     public void numberOfUserOperations() throws IOException {
-        String query_logs_lines;
+        String queryLogsLines;
         String user = null;
-        String useranalysis = null;
+        String userAnalysis = null;
         List<String> list = new ArrayList<String>();
         try (BufferedReader reader = new BufferedReader(new FileReader("./assets/logs/query_log.txt"))) {
-            while ((query_logs_lines = reader.readLine()) != null) {
-                user = query_logs_lines.split(" : ")[1];
+            while ((queryLogsLines = reader.readLine()) != null) {
+                user = queryLogsLines.split(" : ")[1];
                 list.add(user);
                 }
             }
         Set<String> unique = new HashSet<String>(list);
         for (String key : unique) {
-            useranalysis = "User " + user + " submitted " + Collections.frequency(list, key) + " queries ";
-            System.out.println(useranalysis);
+            userAnalysis = "User " + user + " submitted " + Collections.frequency(list, key) + " queries ";
+            System.out.println(userAnalysis);
         }File file = new File("./assets/analytics/analytics.txt");
         FileWriter fr = new FileWriter(file, true);
         BufferedWriter br = new BufferedWriter(fr);
         PrintWriter pr = new PrintWriter(br);
-        pr.println(useranalysis);
+        pr.println(userAnalysis);
         pr.close();
         br.close();
         fr.close();
