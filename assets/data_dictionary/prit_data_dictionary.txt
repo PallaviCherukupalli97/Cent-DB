@@ -1,4 +1,22 @@
-Database name: prit
+Database: prit
+
+Table name: aaaaaaa
+Column name: name	|Column type: text
+
+Table name: abc
+Column name: name	|Column type: varchar
+Column name: id	|Column type: text
+
+Table name: asdad
+Column name: asd	|Column type: text
+Column name: asdasd	|Column type: int
+
+Table name: hello
+Column name: name	|Column type: text
+Column name: id	|Column type: int
+
+Table name: new
+Column name: name	|Column type: text
 
 Table name: p1
 Column name: name	|Column type: varchar
@@ -7,3 +25,17 @@ Column name: age	|Column type: int
 Table name: p2
 Column name: name	|Column type: abc
 Column name: asd	|Column type: int
+
+Table name: p3
+Column name: name	|Column type: varchar
+Column name: id	|Column type: int
+
+Table name: p4
+Column name: name	|Column type: text
+Column name: id	|Column type: int
+Column name: age	|Column type: int
+Column name: contact	|Column type: int
+
+Table name: student
+Column name: name	|Column type: text
+Column name: id	|Column type: int

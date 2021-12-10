@@ -113,27 +113,6 @@ public class MenuOperation {
 //                Analytics
                     break;
 
-                case "5":
-                    DataDictionary dataDictionary = new DataDictionary();
-                    String databaseName = dataDictionary.takeInput();
-                    try {
-                        if(DatabaseSetting.SELECTED_DATABASE != null){
-                            if(dataDictionary.validateDatabase(databaseName)) {
-                                dataDictionary.generateDataDictionary(databaseName);
-                                System.out.println("Database '" + databaseName + "' data dictionary generated.");
-                            }else{
-                                System.out.println("Database '" + databaseName + "' not found. Please try again.");
-                            }
-
-                        }else {
-                            System.out.println("No database selected");
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-//                Data Dictionary
-                    break;
-
                 default:
                     System.out.println("Invalid choice. Please try again");
             }

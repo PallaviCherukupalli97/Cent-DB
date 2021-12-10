@@ -63,3 +63,9 @@
 10-12-2021 17:51:02 : zz : select * from p4;
 10-12-2021 17:51:33 : zz : update p4 set name=hashe where id=24;
 10-12-2021 17:51:38 : zz : select * from p4;
+10-12-2021 18:40:04 : zz : create table abc (name varchar,id text);
+10-12-2021 18:44:09 : zz : create table abc (name varchar, id int);
+10-12-2021 18:45:35 : zz : create table aaaaa (name varcharsad, id int);
+10-12-2021 18:45:51 : zz : create table hello (name text, id int);
+10-12-2021 18:48:53 : zz : create table new (name text);
+10-12-2021 18:49:43 : zz : create table aaaaaaa (name text);

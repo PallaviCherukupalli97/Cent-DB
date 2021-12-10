@@ -9,33 +9,17 @@ import java.util.*;
 
 public class DataDictionary {
 
-    public String takeInput() {
-        System.out.println("Enter the name of the database you want metadata for: ");
-        Scanner sc = new Scanner(System.in);
-        String temp = sc.nextLine();
-        return temp;
-    }
 
-    public boolean validateDatabase(String databaseName) throws FileNotFoundException {
-        File directoryPath = new File("./assets/database");
-        String databases[] = directoryPath.list();
-        for (int i = 0; i < databases.length; i++) {
-            if (databases[i].equals(databaseName)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    public void generateDataDictionary() throws IOException {
+        File dataDictionary = new File(System.getProperty("user.dir") + "/assets/data_dictionary/" + DatabaseSetting.SELECTED_DATABASE + "_data_dictionary.txt");
 
-    public void generateDataDictionary(String databaseName) throws IOException {
-        File dataDictionary = new File(System.getProperty("user.dir") + "/assets/data_dictionary/" + databaseName + "_data_dictionary.txt");
         dataDictionary.createNewFile();
 
         File tables = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/");
         List<String> listOfTables = List.of(tables.list());
 
-        FileWriter fileWriter = new FileWriter(dataDictionary);
-        fileWriter.write("Database name: " + databaseName);
+        FileWriter fileWriter = new FileWriter(dataDictionary, false);
+        fileWriter.write("Database: " + DatabaseSetting.SELECTED_DATABASE);
 
         for (String table : listOfTables) {
 

@@ -1,5 +1,6 @@
 package Operations;
 
+import DataDictionary.DataDictionary;
 import Preferences.*;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
@@ -35,6 +36,10 @@ public class DatabaseOperation {
                     System.out.println("Table created: " + tableName);
                     FileOperations io = new FileOperations();
                     io.writeToTable(tableName, column_titles);
+                    //create data dictioary
+                    DataDictionary dataDictionary = new DataDictionary();
+                    dataDictionary.generateDataDictionary();
+
                 } else {
                     System.out.println("Table already exists.");
                 }

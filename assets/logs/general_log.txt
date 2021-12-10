@@ -156,3 +156,15 @@ Database contains 6	tables with  14 records at:  10-12-2021 17:51:33
 Query execution time :	4660300
 Database contains 6	tables with  14 records at:  10-12-2021 17:51:38
 Query execution time :	4740100
+Database contains 7	tables with  15 records at:  10-12-2021 18:40:04
+Query execution time :	16431100
+Database contains 7	tables with  15 records at:  10-12-2021 18:44:09
+Query execution time :	13331500
+Database contains 7	tables with  15 records at:  10-12-2021 18:45:35
+Query execution time :	268700
+Database contains 8	tables with  16 records at:  10-12-2021 18:45:51
+Query execution time :	15424900
+Database contains 9	tables with  17 records at:  10-12-2021 18:48:53
+Query execution time :	24555200
+Database contains 10	tables with  18 records at:  10-12-2021 18:49:43
+Query execution time :	9063400

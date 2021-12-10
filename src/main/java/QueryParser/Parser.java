@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Parser {
     List<String> column_titles;
+
     public String takeInput() throws IOException {
         System.out.println("Enter a query here: ");
         Scanner sc = new Scanner(System.in);
@@ -38,78 +39,50 @@ public class Parser {
                 String name = query.split(" ")[2];
                 if (keyword.equalsIgnoreCase("database")) {
                     databaseOperation.createDatabase(name);
-//                    call create table method
                 } else if (keyword.equalsIgnoreCase("table")) {
                     column_titles = Validator.getColumnNames(query);
-//                    System.out.println(column_titles);
-                    if(Validator.validDataTypes(query)){
+                    if (Validator.validDataTypes(query)) {
                         databaseOperation.createTable(name, column_titles);
-                    }else{
+                    } else {
                         System.out.println("Invalid syntax. Please try again.");
                     }
-
-
-//                    check if database is selected
-//                    call create database method
                 }
-
                 break;
 
             case "USE":
                 String database_name = query.split(" ")[1];
                 databaseOperation.useDatabase(database_name);
-
-
                 break;
-
 
             case "SELECT":
                 String token = query.split(" ")[1];
                 String tableName = query.split(" ")[3];
                 if (Validator.validateSelectQuery(query)) {
-//                    if (token.equals("*")) {
-                        // SELECT * FROM p1
-                        databaseOperation.selectFullTable(tableName, query);
-//                    } else {
-                        // SELECT id from p1
-//                        String column_name = query.split(" ")[1];
-//                        databaseOperation.selectColumnFromTable(tableName, query);
-
-//                    }
-
+                    databaseOperation.selectFullTable(tableName, query);
                 } else {
                     System.out.println("Invalid query. Please try again");
                 }
-
 
                 break;
             case "INSERT":
                 if (Validator.validateInsertQuery(query)) {
                     List<String> column_values = Validator.getColumnValues(query);
-//                    List<String> column_names =  RegexOperations.getColumnNames(query);
                     String table = query.split(" ")[2];
-
                     databaseOperation.insertRow(table, column_values);
-
                 } else {
                     System.out.println("Invalid query. Please try again.");
                 }
-
                 break;
-
 
             case "DELETE":
                 if (Validator.validateDeleteQuery(query)) {
                     tableName = query.split(" ")[2];
                     databaseOperation.deleteRow(tableName, query);
-
-
                 } else {
                     System.out.println("Invalid query. Please try again");
                 }
-
-
                 break;
+
             case "DROP":
                 if (Validator.validateDropQuery(query)) {
                     String token1 = query.split(" ")[1];
@@ -124,19 +97,15 @@ public class Parser {
                 } else {
                     System.out.println("Invalid query. Please try again.");
                 }
-
-
                 break;
 
             case "UPDATE":
                 if (Validator.validateUpdateQuery(query)) {
                     tableName = query.split(" ")[1];
                     databaseOperation.updateTable(tableName, query);
-
                 } else {
                     System.out.println("Invalid query. Please try again.");
                 }
-
                 break;
 
             default:
