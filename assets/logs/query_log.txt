@@ -2,3 +2,6 @@
 09-12-2021 18:49:25 : rishika : use database1;
 09-12-2021 18:49:58 : rishika : select * from table3;
 09-12-2021 18:50:54 : rishika : insert into table3 (animal,legs) values (camel,4);
+10-12-2021 15:05:11 : zz : use prit;
+10-12-2021 15:14:42 : zz : use test;
+10-12-2021 20:55:05 : zz : use prit;

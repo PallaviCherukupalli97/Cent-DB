@@ -1,1 +1,1 @@
-name varchar:pet varchar:age int:
+name text:pet text:age int

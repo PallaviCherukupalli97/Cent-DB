@@ -3,6 +3,7 @@ package Operations;
 import java.io.File;
 
 import DataModel.DataModel;
+import Dump.DataExporter;
 import Dump.DumpManager;
 import LogManagement.LogManager;
 import Preferences.DatabaseSetting;
@@ -75,8 +76,22 @@ public class MenuOperation {
                     break;
 
                 case "2":
-                	DumpManager dump= new DumpManager();
-                	dump.exportDump();
+                	DataExporter dataExport = new DataExporter();
+                	String database = dataExport.takeInput();
+                	 try {
+                         if(database != null){
+                             if(dataExport.validateDatabase(database)) {
+                            	 dataExport.generateDataDump(database);
+                            	 System.out.println("Dump exported successfully");
+                             }
+                             else{
+                                 System.out.println("Database '" + database + "' does not exist. Please try again.");
+                             }
+                         }
+                     } catch (IOException e) {
+                         e.printStackTrace();
+                     }
+                	
 //                Export
                     break;
 
