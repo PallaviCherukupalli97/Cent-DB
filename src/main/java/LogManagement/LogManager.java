@@ -55,8 +55,7 @@ public class LogManager {
         		}
         		
         	}
-            
-            
+          
             fileWriter.append("Database contains"+" "+fileCounter+"	"+"tables with"+"  "+linecounter+" records at:"+"  "+getCurrentTimeStamp()+"\n");
             fileWriter.append("Query execution time :"+"	"+timer+"\n");
             fileWriter.close();
@@ -73,6 +72,14 @@ public class LogManager {
         } catch (Exception e) {
             System.out.println("Exception occurred: " + e.toString());
         }
+    }
+    
+    public static void crashReport(Exception exp) throws IOException {
+    	
+            FileWriter fileWriter = new FileWriter(System.getProperty("user.dir") + "/assets/logs/event_log.txt", true);
+            fileWriter.append("Exception "+exp+"\n");
+            fileWriter.close();
+        
     }
     
     public void transactionMsg(String msg) {

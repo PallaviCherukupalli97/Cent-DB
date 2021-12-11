@@ -25,7 +25,7 @@ public class Parser {
         }
     }
 
-    public void executeQuery(String query) {
+    public void executeQuery(String query) throws IOException {
         query = query.substring(0, query.length() - 1);
         String task = query.split(" ")[0];
 

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import LogManagement.LogManager;
+
 
 public class DataExporter{
 	
@@ -77,7 +79,7 @@ public class DataExporter{
         return tableStructure.toString();
     }
 
-    public String generateTableDataDump(String databaseName, String tableName, String[] columnsList)
+    public String generateTableDataDump(String databaseName, String tableName, String[] columnsList) throws IOException
     {
     	StringBuilder tableDataRecordBuilder = new  StringBuilder();
         StringBuilder tableDataBuilder = new StringBuilder();
@@ -109,7 +111,7 @@ public class DataExporter{
         return tableDataRecordBuilder.toString();
     }
 
-    private List<String> readLinesOfTable(String databaseName,String table, boolean onlyFirstRecord) {
+    private List<String> readLinesOfTable(String databaseName,String table, boolean onlyFirstRecord) throws IOException {
         List<String> records = new ArrayList<String>();
         String lineText = "";
         int lineCounter = 0;
@@ -130,6 +132,7 @@ public class DataExporter{
             }
         }catch (Exception e){
             System.out.println("Exception occurred: " + e.toString());
+            LogManager.crashReport(e);
         }
         return records;
     }

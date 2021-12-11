@@ -5,9 +5,11 @@ import Preferences.*;
 import java.io.*;
 import java.util.*;
 
+import LogManagement.LogManager;
+
 public class FileOperations {
 
-    public void writeToTable(String tableName, List<String> tableRow) {
+    public void writeToTable(String tableName, List<String> tableRow) throws IOException {
         try {
             FileWriter fileWriter = new FileWriter(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/" + tableName + ".txt", true);
             String temp = "";
@@ -21,6 +23,7 @@ public class FileOperations {
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
+            LogManager.crashReport(e);
         }
 
     }

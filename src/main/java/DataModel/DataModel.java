@@ -8,9 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import LogManagement.LogManager;
+
 public class DataModel {
 
-    public void exportDataModel() {
+    public void exportDataModel() throws IOException {
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter database name: ");
@@ -69,6 +71,7 @@ public class DataModel {
 
             } catch (IOException e) {
                 e.printStackTrace();
+                LogManager.crashReport(e);
             }
 
         }else {

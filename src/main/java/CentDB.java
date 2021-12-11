@@ -1,10 +1,13 @@
 import Authentication.Login;
+
+import java.io.IOException;
+
 import Authentication.*;
 import Preferences.*;
 import UserInterface.*;
 
 public class CentDB {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         System.out.println("Welcome to CentDB Application..!");
         DatabaseSetting.SELECTED_DATABASE = null;

@@ -153,3 +153,7 @@ use university;
 drop table temp;
 use university;
 drop table temp;
+use university;
+update student set first_name=Abc where student_id=1002 ;
+update student set first_name=Monica where student_id=1002 ;
+update student set last_name=Abc where student_id=1002 ;

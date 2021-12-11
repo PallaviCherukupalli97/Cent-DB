@@ -1,4 +1,5 @@
 student_id int:first_name char:last_name char:contact char
 1001:Jay:Sonani:1234567980
-1001:Jay:Sonani:1234567980
-1001:Jay:Abc:1234567980
+1002:Monica:Duddela:1234567980
+1003:Jay:Abc:1234567980
+1006:Anam:j:1546235

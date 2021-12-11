@@ -140,3 +140,16 @@
 11-12-2021 03:46:53 : zz : drop table temp;
 11-12-2021 03:48:33 : zz : use university;
 11-12-2021 03:48:45 : zz : drop table temp;
+11-12-2021 14:54:08 : zz : use university;
+11-12-2021 14:54:51 : zz : update student set first_name=Abc where student_id=1002 ;
+11-12-2021 14:55:41 : zz : update student set first_name=Monica where student_id=1002 ;
+11-12-2021 14:56:08 : zz : update student set last_name=Abc where student_id=1002 ;
+11-12-2021 15:03:45 : zz : use company;
+11-12-2021 15:46:21 : monica : use company;
+11-12-2021 15:47:42 : monica : use university;
+11-12-2021 15:48:59 : monica : insert into student (student_id,first_name,last_name,contact) values (1004,Rishika,Bajaj,1452635);
+11-12-2021 15:49:18 : monica : insert into student (student_id,first_name,last_name,contact) values (106,Manoj,D,89546);
+11-12-2021 15:49:24 : monica : rollback
+11-12-2021 15:56:46 : monica : use database university;
+11-12-2021 15:57:10 : monica : insert into student (student_id,first_name,last_name,contact) values (1006,Anam,j,1546235);
+11-12-2021 15:58:58 : monica : update student set last_name=Duddela where student_id=1002 ;

@@ -6,6 +6,8 @@ import Preferences.DatabaseSetting;
 import java.io.*;
 import java.util.*;
 
+import LogManagement.LogManager;
+
 
 public class DataDictionary {
 
@@ -36,7 +38,7 @@ public class DataDictionary {
 
     }
 
-    private String readFirstLineOfTable(String table) {
+    private String readFirstLineOfTable(String table) throws IOException {
         String firstLine = "";
         try{
             File file = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/" + table);
@@ -46,6 +48,7 @@ public class DataDictionary {
             }
         }catch (Exception e){
             System.out.println("Exception occurred: " + e.toString());
+            LogManager.crashReport(e);
         }
         return firstLine;
     }

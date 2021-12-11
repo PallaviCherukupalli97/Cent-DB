@@ -65,13 +65,12 @@ public class MenuOperation {
 
                         if (parser.validQuery(query)) {
                             long startTime = System.nanoTime();
-                            parser.executeQuery(query);
                             long stopTime = System.nanoTime();
                             long timer = stopTime - startTime;
-
+                            parser.executeQuery(query);
                             if(DatabaseSetting.SELECTED_DATABASE!=null){
+                            	log.eventLog(DatabaseSetting.SELECTED_DATABASE);
                                 LogManager.queryLog(query);
-                                DumpManager.dump(query);
                                 LogManager.generalLog(timer);
 
                             }
@@ -94,6 +93,7 @@ public class MenuOperation {
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
+                        LogManager.crashReport(e);
                     }
 
 //                Export

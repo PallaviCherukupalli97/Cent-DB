@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Stream;
 
+import LogManagement.LogManager;
+
 public class AnalyticsGenerator {
 
     public void countTotalQueries() throws IOException {
@@ -21,6 +23,7 @@ public class AnalyticsGenerator {
                 }
         } catch (IOException e) {
             e.printStackTrace();
+            LogManager.crashReport(e);
         }
 
         String write1 = "Total number of queries (valid + invalid): " + lines;
@@ -43,6 +46,7 @@ public class AnalyticsGenerator {
             count = files.count();
         } catch (IOException e) {
             e.printStackTrace();
+            LogManager.crashReport(e);
         }
         String write2 = "Number of Databases:  " + count;
         System.out.println(write2);
@@ -223,6 +227,7 @@ public class AnalyticsGenerator {
         }
         catch (IOException e) {
             e.printStackTrace();
+            LogManager.crashReport(e);
         }
     }
 

@@ -304,3 +304,23 @@ Database contains 2	tables with  6 records at:  11-12-2021 03:48:33
 Query execution time :	2004800
 Database contains 2	tables with  6 records at:  11-12-2021 03:48:45
 Query execution time :	21806500
+Database contains 2	tables with  6 records at:  11-12-2021 14:54:08
+Query execution time :	1167900
+Database contains 2	tables with  6 records at:  11-12-2021 14:54:52
+Query execution time :	3005700
+Database contains 2	tables with  6 records at:  11-12-2021 14:55:41
+Query execution time :	1838500
+Database contains 2	tables with  6 records at:  11-12-2021 14:56:08
+Query execution time :	1407000
+Database contains 2	tables with  5 records at:  11-12-2021 15:03:45
+Query execution time :	200
+Database contains 2	tables with  5 records at:  11-12-2021 15:46:21
+Query execution time :	200
+Database contains 2	tables with  6 records at:  11-12-2021 15:47:42
+Query execution time :	300
+Database contains 2	tables with  6 records at:  11-12-2021 15:56:46
+Query execution time :	300
+Database contains 2	tables with  7 records at:  11-12-2021 15:57:10
+Query execution time :	200
+Database contains 2	tables with  7 records at:  11-12-2021 15:58:58
+Query execution time :	200

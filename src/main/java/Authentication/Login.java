@@ -6,11 +6,13 @@ import Preferences.DatabaseSetting;
 import java.io.*;
 import java.util.Scanner;
 
+import LogManagement.LogManager;
+
 public class Login {
     static String username, password;
     static Scanner input;
 
-    public static void loginUser(){
+    public static void loginUser() throws IOException{
         input = new Scanner(System.in);
 
         System.out.print("Enter your username: ");
@@ -22,7 +24,7 @@ public class Login {
 
     }
 
-    private static void validateUser(String username, String password){
+    private static void validateUser(String username, String password) throws IOException{
         try {
             String eachLine = "";
             BufferedReader br = new BufferedReader(new FileReader( System.getProperty("user.dir") + "/assets/auth/User_Profile.txt"));
@@ -57,6 +59,7 @@ public class Login {
         }
         catch(Exception e){
             System.out.println("Error occurred: " + e.toString());
+            LogManager.crashReport(e);
         }
     }
 

@@ -4,8 +4,10 @@ import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
+import LogManagement.LogManager;
+
 public class Registration {
-    public static void registerUser() {
+    public static void registerUser() throws IOException {
         Scanner scanner = new Scanner(System.in);
 //Take inputs
         System.out.print("\nPlease enter a username of your choice: ");
@@ -24,7 +26,7 @@ public class Registration {
         createFile(hashedUserID, hashedPassword, securityQuestion, securityAnswer);
     }
 
-    private static void createFile(String hashedUserID, String hashedPassword, String securityQuestion, String securityAnswer) {
+    private static void createFile(String hashedUserID, String hashedPassword, String securityQuestion, String securityAnswer) throws IOException {
         try {
             FileWriter myWriter = new FileWriter(System.getProperty("user.dir") + "/assets/auth/User_Profile.txt", true);
             if (newUser(hashedUserID)) {
@@ -35,6 +37,7 @@ public class Registration {
             }
         } catch (Exception e) {
             System.out.println("Exception occurred: " + e.toString());
+            LogManager.crashReport(e);
         }
     }
 

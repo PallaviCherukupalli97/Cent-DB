@@ -1,6 +1,7 @@
 package Operations;
 
 import DataDictionary.DataDictionary;
+import LogManagement.LogManager;
 import Preferences.*;
 import org.apache.commons.io.FileUtils;
 import java.io.File;
@@ -26,7 +27,7 @@ public class DatabaseOperation {
 
     }
 
-    public void createTable(String tableName, List<String> column_titles) {
+    public void createTable(String tableName, List<String> column_titles) throws IOException {
         if (DatabaseSetting.SELECTED_DATABASE == null) {
             System.out.println("No database selected. Please select a database first.");
         } else {
@@ -45,11 +46,12 @@ public class DatabaseOperation {
                 }
             } catch (Exception e) {
                 System.out.println("Exception: " + e.toString());
+                LogManager.crashReport(e);
             }
         }
     }
 
-    public void insertRow(String tableName, List<String> column_values) {
+    public void insertRow(String tableName, List<String> column_values) throws IOException {
         File file = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/");
         List<String> list_of_tables = List.of(file.list());
 
@@ -134,7 +136,7 @@ public class DatabaseOperation {
 //        }
 //    }
 
-    public void dropDatabase(String dbName) {
+    public void dropDatabase(String dbName) throws IOException {
         File database = new File(System.getProperty("user.dir") + "/assets/database/" + dbName);
         if (database.exists()) {
             try {
@@ -142,13 +144,14 @@ public class DatabaseOperation {
                 System.out.println("Database '" + dbName + "' dropped successfully.");
             } catch (IOException e) {
                 e.printStackTrace();
+                LogManager.crashReport(e);
             }
         } else {
             System.out.println("Database '" + dbName + "' not found. Please try again.");
         }
     }
 
-    public void dropTable(String tableName) {
+    public void dropTable(String tableName) throws IOException {
         if (DatabaseSetting.SELECTED_DATABASE == null)
             System.out.println("No database selected");
         else {
@@ -158,6 +161,7 @@ public class DatabaseOperation {
                     FileUtils.delete(file);
                 } catch (IOException e) {
                     e.printStackTrace();
+                    LogManager.crashReport(e);
                 }
 //                file.delete();
                 System.out.println("Table '" + tableName + "' dropped successfully.");
@@ -166,7 +170,7 @@ public class DatabaseOperation {
         }
     }
 
-    public void deleteRow(String tableName, String query) {
+    public void deleteRow(String tableName, String query) throws IOException {
         if (DatabaseSetting.SELECTED_DATABASE == null)
             System.out.println("No database selected");
         else {
@@ -197,7 +201,7 @@ public class DatabaseOperation {
         }
     }
 
-    public void updateTable(String tableName, String query) {
+    public void updateTable(String tableName, String query) throws IOException {
         if (DatabaseSetting.SELECTED_DATABASE == null)
             System.out.println("No database selected");
         else {
