@@ -1,0 +1,11 @@
+Database: university
+
+Table: student
+------------------------
+|    Column|  Data Type|
+------------------------
+|student_id|        int|
+|first_name|       char|
+| last_name|       char|
+|   contact|       char|
+------------------------

@@ -1,0 +1,11 @@
+Database: company
+
+Table name: abc
+Column name: abc	|Column type: char
+Column name: id	|Column type: int
+Column name: anything	|Column type: int
+
+Table name: employee
+Column name: emp_name	|Column type: char
+Column name: emp_id	|Column type: int
+Column name: emp_age	|Column type: int

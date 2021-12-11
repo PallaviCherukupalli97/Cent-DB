@@ -154,7 +154,12 @@ public class DatabaseOperation {
         else {
             File file = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE + "/" + tableName + ".txt");
             if (file.exists()) {
-                file.delete();
+                try {
+                    FileUtils.delete(file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+//                file.delete();
                 System.out.println("Table '" + tableName + "' dropped successfully.");
             } else
                 System.out.println("Table '" + tableName + "' not found. Please try again.");
@@ -174,7 +179,7 @@ public class DatabaseOperation {
 
                 FileOperations io = new FileOperations();
                 List<List<String>> resultSet = io.readTable(tableName);
-                System.out.println("ResultSet:\n" + resultSet);
+//                System.out.println("ResultSet:\n" + resultSet);
 
                 int del_index = -1;
                 for(int i=0; i<resultSet.size();i++)

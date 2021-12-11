@@ -1,0 +1,20 @@
+Database: company
+
+Table: abc
+------------------------
+|    Column|  Data Type|
+------------------------
+|       abc|       char|
+|        id|        int|
+|  anything|        int|
+------------------------
+
+
+Table: employee
+------------------------
+|    Column|  Data Type|
+------------------------
+|  emp_name|       char|
+|    emp_id|        int|
+|   emp_age|        int|
+------------------------

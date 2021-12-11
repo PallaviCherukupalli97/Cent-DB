@@ -1,0 +1,3 @@
+emp_name char:emp_id int:emp_age int
+Jay:10001:23
+DEF:10002:24

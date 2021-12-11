@@ -27,7 +27,6 @@ public class Parser {
 
     public void executeQuery(String query) {
         query = query.substring(0, query.length() - 1);
-//        System.out.println("Executing query");
         String task = query.split(" ")[0];
 
         DatabaseOperation databaseOperation = new DatabaseOperation();
