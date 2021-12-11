@@ -16,15 +16,16 @@ import Transactions.Transactions;
 import java.io.IOException;
 
 public class MenuOperation {
-	LogManager log = new LogManager();
+    LogManager log = new LogManager();
+
     public void performTask() throws IOException {
         String choice = "";
-        
+
         while (true) {
             choice = Menu.operationMenu();
             switch (choice) {
                 case "1":
-                	Parser parser = new Parser();
+                    Parser parser = new Parser();
                     String query = parser.takeInput();
                     Transactions transactions = new Transactions();
                     File sourceDirectory = new File(System.getProperty("user.dir") + "/assets/database/" + DatabaseSetting.SELECTED_DATABASE);
@@ -43,7 +44,7 @@ public class MenuOperation {
                                     System.out.println(successMsg);
                                     log.transactionMsg(successMsg);
                                 } else {
-                                	String rollbackMsg = "Transaction rollback successfully";
+                                    String rollbackMsg = "Transaction rollback successfully";
                                     System.out.println(rollbackMsg);
                                     log.transactionMsg(rollbackMsg);
                                 }
@@ -60,39 +61,41 @@ public class MenuOperation {
                         //delete trans db
                         transactions.deleteTransactionDatabase(targetDirectory);
                     } else {
-                        
-                        
+
+
                         if (parser.validQuery(query)) {
-                        	long startTime = System.nanoTime();
+                            long startTime = System.nanoTime();
                             parser.executeQuery(query);
                             long stopTime = System.nanoTime();
-                        	long timer = stopTime - startTime;
+                            long timer = stopTime - startTime;
 
-                        	LogManager.queryLog(query);
-                        	DumpManager.dump(query);
-                        	LogManager.generalLog(timer);
+                            if(DatabaseSetting.SELECTED_DATABASE!=null){
+                                LogManager.queryLog(query);
+                                DumpManager.dump(query);
+                                LogManager.generalLog(timer);
+
+                            }
 
                         }
                     }
                     break;
 
                 case "2":
-                	DataExporter dataExport = new DataExporter();
-                	String database = dataExport.takeInput();
-                	 try {
-                         if(database != null){
-                             if(dataExport.validateDatabase(database)) {
-                            	 dataExport.generateDataDump(database);
-                            	 System.out.println("Dump exported successfully");
-                             }
-                             else{
-                                 System.out.println("Database '" + database + "' does not exist. Please try again.");
-                             }
-                         }
-                     } catch (IOException e) {
-                         e.printStackTrace();
-                     }
-                	
+                    DataExporter dataExport = new DataExporter();
+                    String database = dataExport.takeInput();
+                    try {
+                        if (database != null) {
+                            if (dataExport.validateDatabase(database)) {
+                                dataExport.generateDataDump(database);
+                                System.out.println("Dump exported successfully");
+                            } else {
+                                System.out.println("Database '" + database + "' does not exist. Please try again.");
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 //                Export
                     break;
 

@@ -7,7 +7,7 @@ public class CentDB {
     public static void main(String[] args) {
 
         System.out.println("Welcome to CentDB Application..!");
-//        DatabaseSetting.SELECTED_DATABASE = null;
+        DatabaseSetting.SELECTED_DATABASE = null;
         int choice;
 
             choice = Menu.mainMenu();

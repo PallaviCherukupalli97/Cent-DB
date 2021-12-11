@@ -25,7 +25,7 @@ public class Validator {
         while (matcher.find()){
             if(count==1)
                 for(String s: matcher.group(1).split(","))
-                    column_values.add(s);
+                    column_values.add(s.trim());
             count++;
 
         }

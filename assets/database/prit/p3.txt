@@ -1,2 +1,0 @@
-name varchar:id int
-jay:23

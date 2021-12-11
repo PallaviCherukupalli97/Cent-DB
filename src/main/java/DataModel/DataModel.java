@@ -1,36 +1,81 @@
 package DataModel;
 
+import Preferences.DatabaseSetting;
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class DataModel {
 
     public void exportDataModel() {
-        try {
 
-            File file = new File(System.getProperty("user.dir") + "/assets/data_dictionary/");
-            List<String> allDictionaries = List.of(file.list());
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter database name: ");
+        String dbName = sc.nextLine();
 
-            File dataModel = new File(System.getProperty("user.dir") + "/assets/data_model/ERD.txt");
-            dataModel.createNewFile();
-            FileWriter fileWriter = new FileWriter(dataModel);
+        File allDatabase = new File(System.getProperty("user.dir") + "/assets/database/");
+        List<String> list_of_databases = List.of(allDatabase.list());
 
-            for(String dictionary: allDictionaries){
-                File dict = new File(System.getProperty("user.dir") + "/assets/data_dictionary/" + dictionary);
-                try (BufferedReader br = new BufferedReader(new FileReader(dict))) {
-                    String line;
+        if(list_of_databases.contains(dbName)){
+            String fileContent = "";
+            try {
+
+                File dataDictionary = new File(System.getProperty("user.dir") + "/assets/data_dictionary/" + dbName + "_data_dictionary.txt");
+                try (BufferedReader br = new BufferedReader(new FileReader(dataDictionary))) {
+                    String line = "";
                     while ((line = br.readLine()) != null) {
-                        fileWriter.write(line + "\n");
+                        fileContent += line + "\n";
                     }
                 }
-                fileWriter.write("-----------------------------------------------------\n");
+                File dataModel = new File(System.getProperty("user.dir") + "/assets/data_model/" + dbName + "_ERD.txt");
+                dataModel.createNewFile();
+                FileWriter fileWriter = new FileWriter(dataModel);
+                fileWriter.write("Database: " + dbName);
+
+
+                String[] tables = fileContent.split("\n\n");
+
+                for(int i=1;i<tables.length;i++){
+                    String table_name = tables[i].split("\n")[0].trim().split(":")[1].trim();
+                    String[] temp = tables[i].split("\n");
+                    List<String> column_line = new ArrayList<>();
+                    for(int k=1;k<temp.length;k++){
+                        column_line.add(temp[k]);
+                    }
+
+                    List<String> column_names = new ArrayList<>();
+                    List<String> column_types = new ArrayList<>();
+                    for(int q=0;q<column_line.size();q++){
+                        column_names.add(column_line.get(q).split("\\|")[0].split(":")[1].trim());
+                        column_types.add(column_line.get(q).split("\\|")[1].split(":")[1].trim());
+                    }
+                    //
+                    fileWriter.write("\n\nTable: " + table_name);
+                    fileWriter.write("\n------------------------");
+                    fileWriter.write(String.format("\n|%10s| %10s|","Column","Data Type"));
+                    fileWriter.write("\n------------------------");
+                    for(int d=0;d<column_names.size();d++){
+                        fileWriter.write(String.format("\n|%10s| %10s|",column_names.get(d),column_types.get(d)));
+                    }
+                    fileWriter.write("\n------------------------\n");
+
+                }
+                System.out.println("ERD exported successfully.");
+                fileWriter.close();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-            fileWriter.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        }else {
+            System.out.println("Database '" + dbName + "' not found.");
         }
+
+
 
 
     }

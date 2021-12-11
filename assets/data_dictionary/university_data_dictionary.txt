@@ -1,0 +1,11 @@
+Database: university
+
+Table name: student
+Column name: student_id	|Column type: int
+Column name: first_name	|Column type: char
+Column name: last_name	|Column type: char
+Column name: contact	|Column type: char
+
+Table name: temp
+Column name: name	|Column type: char
+Column name: id	|Column type: int
